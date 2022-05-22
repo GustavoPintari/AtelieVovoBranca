@@ -20,13 +20,13 @@
                     <div class="row gx-3">
                         <div class="col-4">
                             <div class="list-group">
-                                <a href="{{ route('admin_produtos') }}"
+                                <a href="{{ route('produtos') }}"
                                 class="list-group-item list-group-item-action
                                 bg-danger text-light">
                                     <i class="bi bi-clipboard2-plus"></i> Produtos
                                 </a>
 
-                                <a href="{{ route('admin_produtotipo') }}"
+                                <a href="{{ route('categorias') }}"
                                 class="list-group-item list-group-item-action">
                                     <i class="bi bi-clipboard2-plus"></i> Tipos de Produto
                                 </a>

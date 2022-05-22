@@ -19,7 +19,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link text-white" 
-                  href="{{ route('admin_produtos') }}">Produtos</a>
+                  href="{{ route('produtos') }}">Produtos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" 
