@@ -25,7 +25,7 @@
                                     <i class="bi bi-clipboard2-plus"></i> Produtos
                                 </a>
 
-                                <a href="{{ route('categorias') }}"
+                                <a href="{{ route('categoria.list') }}"
                                 class="list-group-item list-group-item-action
                                 bg-danger text-light">
                                     <i class="bi bi-clipboard2-plus"></i> Categorias
@@ -51,116 +51,22 @@
                                           data-bs-parent="#divCategoria">
                                             <div class="accordion-body">
                                                 <button type="button" 
-                                                    onclick="window.location.href='#'" class="btn 
-                                                    btn-lg btn-danger"> Alterar
+                                                    onclick="window.location.href='{{ route('categoria.edit', $c->id) }}'" 
+                                                    class="btn btn-lg btn-danger"> Alterar
                                                 </button>
                                                 <button type="button" 
-                                                    onclick="window.location.href='#'" class="btn 
-                                                    btn-lg btn-danger"> Excluir
+                                                    onclick="window.location.href='#'"
+                                                    class="btn btn-lg btn-danger"> Excluir
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
-                                
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" 
-                                        type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#produto000002">
-                                            <b>Boneco</b>
-                                            <span class="mx-1">(cadastrado em 01/01/2022)</span>
-                                        </button>
-                                    </h2>
-                                    <div id="produto000002" class="accordion-collapse collapse"
-                                    data-bs-parent="#divProdutosTipo">
-                                        <div class="accordion-body">
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Alterar
-                                            </button>
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Excluir
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>    
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" 
-                                        type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#tipo000003">
-                                            <b>Bailarina</b>
-                                            <span class="mx-1">(cadastrado em 01/01/2022)</span>
-                                        </button>
-                                    </h2>
-                                    <div id="tipo000003" class="accordion-collapse collapse"
-                                    data-bs-parent="#divProdutosTipo">
-                                        <div class="accordion-body">        
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Alterar
-                                            </button>
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Excluir
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>  
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" 
-                                        type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#tipo000004">
-                                            <b>Kit</b>
-                                            <span class="mx-1">(cadastrado em 01/01/2022)</span>
-                                        </button>
-                                    </h2>
-                                    <div id="tipo000004" class="accordion-collapse collapse"
-                                    data-bs-parent="#divProdutosTipo">
-                                        <div class="accordion-body">
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Alterar
-                                            </button>
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Excluir
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>    
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button collapsed" 
-                                        type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#tipo000005">
-                                            <b>Pelúcia</b>
-                                            <span class="mx-1">(cadastrado em 01/01/2022)</span>
-                                        </button>
-                                    </h2>
-                                    <div id="tipo000005" class="accordion-collapse collapse"
-                                    data-bs-parent="#divProdutos">
-                                        <div class="accordion-body">                      
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Alterar
-                                            </button>
-                                            <button type="button" 
-                                                onclick="window.location.href='#'" class="btn 
-                                                btn-lg btn-danger"> Excluir
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>                                       
+                                @endforeach                                       
                             </div>
-
                             <div class="d-flex flex-row-reverse">                  
-                                <button type="button" 
-                                    onclick="window.location.href='#'" class="btn 
-                                    btn-lg btn-danger p-2 my-3"> Cadastrar Novo
+                                <button type="button"              
+                                    onclick="window.location.href='{{ route('categoria.new') }}'"
+                                    class="btn btn-lg btn-danger p-2 my-3"> Cadastrar Novo
                                 </button>
                             </div>
                         </div>                 

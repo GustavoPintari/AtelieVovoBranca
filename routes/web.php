@@ -80,4 +80,11 @@ Route::get('/admin_caixa', function () {
 })->name('admin_caixa');
 
 Route::get('/produtos', 'ProdutosController@index')->name('produtos');
-Route::get('/categorias', 'CategoriasController@index')->name('categorias');
+
+Route::get('/categorias', 'CategoriasController@index')->name('categoria.list');
+
+Route::get('/categorias/novo', 'CategoriasController@novo')->name('categoria.new');
+Route::post('CategoriasController@add');
+
+Route::get('/categorias/{id}/editar', 'CategoriasController@editar')->name('categoria.edit');
+Route::put('CategoriasController@update')->name('categoria.update');
