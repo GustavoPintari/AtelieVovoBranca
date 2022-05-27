@@ -16,12 +16,12 @@ class CreateProdutoTable extends Migration
         Schema::create('produto', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 60);
+            $table->foreignId('categoria_id')->references('id')->on('categoria');
             $table->text('descricao');
             $table->string('imagem', 15);
             $table->boolean('visivel');
             $table->double('valor', 8, 2);
             $table->bigInteger('qtd_estoque');
-            $table->date('cadastro');
             $table->timestamps();
         });
     }
@@ -34,5 +34,6 @@ class CreateProdutoTable extends Migration
     public function down()
     {
         Schema::dropIfExists('produto');
+       
     }
 }

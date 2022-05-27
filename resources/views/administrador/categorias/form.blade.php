@@ -32,9 +32,9 @@
                             </div>
                         </div>
                         <div class="col-8 px-5">
-                            @if( Request::is('*/novo') )
-                                <form action={{ route('categoria.new') }} method="post">
-                                @csrf
+                            @if(Request::is('*/novo'))
+                                <form action={{ route('categoria.create') }} method="post">
+                                    @csrf
                                     <div class="mb-3">
                                         <label for="descricao" class="form-label">
                                             Digite o nome da nova Categoria:
@@ -54,9 +54,10 @@
                                         </button>
                                     </div>
                                 </form>
-                            @else
-                                <form action={{ route('categoria.update', $categoria->id) }} method="put">
+                            @elseif (Request::is('*/editar'))
+                                <form action={{ route('categoria.update', $categoria->id) }} method="post">
                                 @csrf
+                                @method('put')
                                     <div class="mb-3">
                                         <label for="descricao" class="form-label">
                                             Digite o novo nome da Categoria:
@@ -73,6 +74,30 @@
                                         <button type="submit" 
                                             class="mx-3 btn btn-lg btn-danger">
                                             Alterar
+                                        </button>
+                                    </div>
+                                </form>
+                            
+                            @else
+                                <form action={{ route('categoria.delete', $categoria->id) }} method="post">
+                                @csrf
+                                @method('delete')
+                                    <div class="mb-3">
+                                        <label for="descricao" class="form-label">
+                                            A seguinte Categoria será removida:
+                                        </label>
+                                        <input name="descricao" type="text" disabled
+                                            value="{{ $categoria->descricao }}" class="form-control" id="descricao">
+                                    </div>
+                                    <div class="d-flex flex-row-reverse">
+                                        <button type="button"                                                                          
+                                            onclick="window.location.href='{{ route('categoria.list') }}'"
+                                            class="btn btn-lg btn-danger">
+                                            Cancelar
+                                        </button>
+                                        <button type="submit" 
+                                            class="mx-3 btn btn-lg btn-danger">
+                                            Remover
                                         </button>
                                     </div>
                                 </form>

@@ -51,12 +51,12 @@
                                           data-bs-parent="#divCategoria">
                                             <div class="accordion-body">
                                                 <button type="button" 
-                                                    onclick="window.location.href='{{ route('categoria.edit', $c->id) }}'" 
+                                                    onclick="window.location.href='{{route('categoria.update', $c->id)}}'" 
                                                     class="btn btn-lg btn-danger"> Alterar
                                                 </button>
                                                 <button type="button" 
-                                                    onclick="window.location.href='#'"
-                                                    class="btn btn-lg btn-danger"> Excluir
+                                                    onclick="window.location.href='{{route('categoria.delete', $c->id)}}'"
+                                                    class="btn btn-lg btn-danger"> Remover
                                                 </button>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                             </div>
                             <div class="d-flex flex-row-reverse">                  
                                 <button type="button"              
-                                    onclick="window.location.href='{{ route('categoria.new') }}'"
+                                    onclick="window.location.href='{{ route('categoria.create') }}'"
                                     class="btn btn-lg btn-danger p-2 my-3"> Cadastrar Novo
                                 </button>
                             </div>

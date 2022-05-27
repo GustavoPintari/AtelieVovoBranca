@@ -83,8 +83,11 @@ Route::get('/produtos', 'ProdutosController@index')->name('produtos');
 
 Route::get('/categorias', 'CategoriasController@index')->name('categoria.list');
 
-Route::get('/categorias/novo', 'CategoriasController@novo')->name('categoria.new');
-Route::post('CategoriasController@add');
+Route::get('/categorias/novo', 'CategoriasController@novo')->name('categoria.create');
+Route::post('/categorias/novo', 'CategoriasController@create');
 
-Route::get('/categorias/{id}/editar', 'CategoriasController@editar')->name('categoria.edit');
-Route::put('CategoriasController@update')->name('categoria.update');
+Route::get('/categorias/{id}/editar', 'CategoriasController@identify')->name('categoria.update');
+Route::put('/categorias/{id}/editar', 'CategoriasController@update');
+
+Route::get('/categorias/{id}/remover', 'CategoriasController@identify')->name('categoria.delete');
+Route::delete('/categorias/{id}/remover', 'CategoriasController@remove');

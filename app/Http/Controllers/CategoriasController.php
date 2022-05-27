@@ -20,16 +20,12 @@ class CategoriasController extends Controller
         return view('administrador.categorias.form');
     }
 
-    public function add(Request $request){
-
-        $categoria = new Categoria();
-        $categoria->create($request->all());
-     
-        return Redirect::to('/categorias');
-
+    public function create(Request $request){
+        Categoria::create($request->all());
+        return redirect()->route('categoria.list');
     }
 
-    public function editar($id){
+    public function identify($id){
         $categoria = Categoria::findOrFail($id);
         return view('administrador.categorias.form', ['categoria' => $categoria]);
     }
@@ -37,7 +33,14 @@ class CategoriasController extends Controller
     public function update(Request $request, $id){
         $categoria = Categoria::findOrFail($id);
         $categoria->update($request->all());
-     
-        return Redirect::to('/categorias');
+        return redirect()->route('categoria.list');
     }
+
+    public function remove(Request $request, $id){
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete($request->all());
+        return redirect()->route('categoria.list');
+    }
+
+
 }
