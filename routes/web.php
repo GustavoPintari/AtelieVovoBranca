@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\CategoriasController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -79,15 +80,40 @@ Route::get('/admin_caixa', function () {
     return view('administrador/admin_caixa');
 })->name('admin_caixa');
 
-Route::get('/produtos', 'ProdutosController@index')->name('produtos');
+Route::prefix('categorias')->name('categoria.')->group(function() {
 
-Route::get('/categorias', 'CategoriasController@index')->name('categoria.list');
+    Route::get('/', 'CategoriasController@index')->name('list');
 
-Route::get('/categorias/novo', 'CategoriasController@novo')->name('categoria.create');
-Route::post('/categorias/novo', 'CategoriasController@create');
+    Route::prefix('novo')->group(function(){
+        Route::get('/', 'CategoriasController@novo')->name('create');
+        Route::post('/', 'CategoriasController@create');
+    });
+    
+    Route::prefix('{id}/editar')->group(function(){
+        Route::get('/', 'CategoriasController@atualizar')->name('update');
+        Route::put('/', 'CategoriasController@update');
+    });
+    
+    Route::prefix('{id}/remover')->group(function(){
+        Route::get('/', 'CategoriasController@remover')->name('delete');
+        Route::delete('/', 'CategoriasController@delete');
+    });
+});
 
-Route::get('/categorias/{id}/editar', 'CategoriasController@identify')->name('categoria.update');
-Route::put('/categorias/{id}/editar', 'CategoriasController@update');
+Route::prefix('produtos')->name('produto.')->group(function() {
 
-Route::get('/categorias/{id}/remover', 'CategoriasController@identify')->name('categoria.delete');
-Route::delete('/categorias/{id}/remover', 'CategoriasController@remove');
+    Route::get('/', 'ProdutosController@index')->name('list');
+
+    Route::prefix('novo')->group(function(){
+        Route::get('/', 'ProdutosController@novo')->name('create');
+        Route::post('/', 'ProdutosController@create');
+    });
+
+    Route::prefix('{id}/editar')->group(function(){
+        Route::get('/', 'ProdutosController@atualizar')->name('update');
+        Route::put('/', 'ProdutosController@update');
+    });
+
+});
+
+

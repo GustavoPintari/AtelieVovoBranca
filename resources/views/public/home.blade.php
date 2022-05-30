@@ -107,8 +107,7 @@
                                     <i class="bi-suit-heart" style="font-size: 24px;
                                     line-height: 24px;"></i>
                                 </a>
-                                <img src="{{ asset('img/produtos/000001.png') }}"
-                                  class="card-img-top">
+                                <img src="{{ asset('img/produtos/000001.png') }}" class="card-img-top">
                                 <div class="card-header">
                                     <h5 class="card-title truncar-2l">
                                         Boneca de Pano Emília

@@ -19,7 +19,7 @@
           <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link text-white" 
-                  href="{{ route('produtos') }}">Produtos</a>
+                  href="{{ route('produto.list') }}">Produtos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" 
