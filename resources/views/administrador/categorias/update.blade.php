@@ -4,8 +4,8 @@
 @section('set', 'Categoria')
 
 @section('form')
-    <form action={{ route('categoria.update',
-        $categoria->id) }} method="post"> @csrf @method('put')
+    <form action={{ route('categoria.update',$categoria->id) }} 
+        method="post"> @csrf @method('put')
         <div class="mb-3">
             <label for="descricao" class="form-label">
                 Digite o novo nome da Categoria:

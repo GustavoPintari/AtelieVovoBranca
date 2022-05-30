@@ -4,9 +4,9 @@
 @section('set', 'Produto')
 
 @section('form')
-    <form action={{ route('produto.update',
-        $produto->id) }} method="post"> @csrf @method('put')
-
+    <form action={{ route('produto.update', $produto->id) }}
+        method="post" enctype="multipart/form-data"> 
+        @csrf @method('put')
         <div class="mb-3">
             <label for="nome" class="form-label">
                 Digite o novo nome do Produto:
@@ -30,24 +30,26 @@
             </label>
             <select class="form-select" id="id_categoria"
                 name="id_categoria">
-                <option selected>
-                    {{-- {{ $produto->categoria_id }} --}}
+                <option disabled selected>
+                    {{ $atual->descricao }}
                 </option>
                 @foreach ($categoria as $c)
-                    <option value="{{ $c->id }}">{{ $c->descricao }}</option>
+                    @if($c->id != $atual->id)
+                        <option value="{{ $c->id }}">
+                            {{ $c->descricao }}
+                        </option>
+                    @endif
                 @endforeach
             </select>
         </div>
 
         <div class="mb-3">
-
             {{-- <img src="{{ asset("img/produtos/".$produto->imagem)}}"> --}}
-
             <label for="imagem" class="form-label">
                 Adicione a nova Imagem do Produto:
-            </label>
-            
-            <input type="file" class="form-control" name="imagem" id="imagem" accept="image/*">
+            </label>     
+            <input name="imagem" id="imagem"
+            type="file" class="form-control" accept="image/*">
         </div>
 
         <div class="mb-3" class="form-label">

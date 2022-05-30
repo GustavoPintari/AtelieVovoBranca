@@ -24,11 +24,13 @@
                         data-bs-parent="#divProduto">
                         <div class="accordion-body">
                             <button type="button" 
-                                onclick="window.location.href='{{ route('produto.update', $p->id) }}'"
+                                onclick="window.location.href=
+                                '{{ route('produto.update', $p->id) }}'"
                                 class="btn btn-lg btn-danger"> Alterar
                             </button>
                             <button type="button" 
-                                onclick="window.location.href='{{ route('produto.list', $p->id) }}'"
+                                onclick="window.location.href=
+                                '{{ route('produto.delete', $p->id) }}'"
                                 class="btn btn-lg btn-danger"> Remover
                             </button>
                         </div>

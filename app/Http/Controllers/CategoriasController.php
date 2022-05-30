@@ -10,8 +10,9 @@ class CategoriasController extends Controller
 {
     public function index(){
         $categorias = Categoria::get();
+
         return view('administrador.categorias.list', 
-            ['categorias' => $categorias]);
+            compact('categorias'));
     }
 
     public function novo(){
@@ -20,6 +21,7 @@ class CategoriasController extends Controller
 
     public function create(Request $request){
         Categoria::create($request->all());
+
         return redirect()->route('categoria.list');
     }
 
@@ -27,24 +29,27 @@ class CategoriasController extends Controller
         $categoria = Categoria::findOrFail($id);
 
         return view('administrador.categorias.update', 
-            ['categoria' => $categoria]);
+            compact('categoria'));
     }
 
     public function update(Request $request, $id){
         $categoria = Categoria::findOrFail($id);
         $categoria->update($request->all());
+
         return redirect()->route('categoria.list');
     }
 
     public function remover($id){
         $categoria = Categoria::findOrFail($id);
+        
         return view('administrador.categorias.delete', 
-            ['categoria' => $categoria]);
+            compact('categoria'));
     }
 
     public function delete(Request $request, $id){
         $categoria = Categoria::findOrFail($id);
         $categoria->delete($request->all());
+
         return redirect()->route('categoria.list');
     }
 

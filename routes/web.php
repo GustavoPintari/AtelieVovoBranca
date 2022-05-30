@@ -114,6 +114,10 @@ Route::prefix('produtos')->name('produto.')->group(function() {
         Route::put('/', 'ProdutosController@update');
     });
 
+    Route::prefix('{id}/remover')->group(function(){
+        Route::get('/', 'ProdutosController@remover')->name('delete');
+        Route::delete('/', 'ProdutosController@delete');
+    });
 });
 
 
