@@ -43,10 +43,13 @@
         </div>
         @endforelse
         <div class="d-flex flex-row-reverse">
-            <button type="button" 
-                onclick="window.location.href='{{ route('produto.create') }}'"
-                class="btn btn-lg btn-danger p-2 my-3"> Cadastrar Novo
-            </button>
+            <div class="mb-5">
+                <button type="button" 
+                    onclick="window.location.href=
+                    '{{ route('produto.create') }}'"
+                    class="btn btn-lg btn-danger p-2 my-3"> Cadastrar Novo
+                </button>
+            </div>
         </div>
     </div>
 @endsection

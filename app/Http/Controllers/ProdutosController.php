@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Services\ImagemService;
-
-use Illuminate\Http\Request;
 
 class ProdutosController extends Controller
 {
@@ -26,7 +26,7 @@ class ProdutosController extends Controller
 
     public function novo(){
         $categorias = Categoria::get();
-
+    
         return view('administrador.produtos.create', 
             compact('categorias'));
     }
@@ -52,7 +52,7 @@ class ProdutosController extends Controller
 
         if(!empty($request->imagem)){
             $this->imagemService->deletaImagem($produto);
-            $produto->update($this->criaImagem($request));
+            $produto->update($this->imagemService->criaImagem($request));
         } else {
             $produto->update($request->except('imagem'));
         }

@@ -121,3 +121,7 @@ Route::prefix('produtos')->name('produto.')->group(function() {
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

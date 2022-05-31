@@ -4,6 +4,7 @@
 @section('set', 'Produto')
 
 @section('form')
+    @if($categorias->first())
     <form action={{ route('produto.create') }} 
         method="post" enctype="multipart/form-data"> @csrf
         <div class="mb-3">
@@ -65,13 +66,26 @@
         </div>
 
         <div class="d-flex flex-row-reverse">
-            <button type="button" onclick="window.location.href='{{ route('produto.list') }}'"
-                class="btn btn-lg btn-danger">
-                Cancelar
-            </button>
-            <button type="submit" class="mx-3 btn btn-lg btn-danger">
-                Enviar
-            </button>
+            <div class="mb-5">
+                <button type="button" onclick="window.location.href=
+                    '{{ route('produto.list') }}'" 
+                    class="btn btn-lg btn-danger"> Cancelar
+                </button>
+                <button type="submit" class="btn btn-lg btn-danger">
+                    Enviar
+                </button>
+            </div>
         </div>
     </form>
+    @else
+        <div class="card card-body text-center">
+            <h5> É preciso ter pelo menos uma Categoria cadastrada </h5>
+        </div>
+        <div class="d-flex flex-row-reverse">
+            <button type="button" 
+                onclick="window.location.href='{{ route('produto.list') }}'"
+                class="btn btn-lg btn-danger p-2 my-3"> Voltar
+            </button>
+        </div>
+    @endif
 @endsection

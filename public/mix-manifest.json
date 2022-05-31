@@ -1,8 +1,4 @@
 {
-    "/site/jquery.js": "/site/jquery.js",
-    "/site/bootstrap.js": "/site/bootstrap.js",
-    "/site/bootstrap.css": "/site/bootstrap.css",
-    "/site/bootstrap-icons.css": "/site/bootstrap-icons.css",
-    "/site/fonts/bootstrap-icons.woff": "/site/fonts/bootstrap-icons.woff",
-    "/site/fonts/bootstrap-icons.woff2": "/site/fonts/bootstrap-icons.woff2"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css"
 }
