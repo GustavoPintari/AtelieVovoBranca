@@ -3,11 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
+use App\Services\ImagemService;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 
 class CategoriasController extends Controller
 {
+    private $imagemService;
+
+    public function __construct(ImagemService $imagemService)
+    {
+        $this->imagemService = $imagemService;
+    }
+
     public function index(){
         $categorias = Categoria::get();
 
@@ -48,6 +56,12 @@ class CategoriasController extends Controller
 
     public function delete(Request $request, $id){
         $categoria = Categoria::findOrFail($id);
+        $produtos = $categoria->produtos()->get();
+
+        foreach($produtos as $p){
+            $this->imagemService->deletaImagem($p);
+        }
+        
         $categoria->delete($request->all());
 
         return redirect()->route('categoria.list');

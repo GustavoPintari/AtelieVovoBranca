@@ -4,11 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Categoria;
+use App\Services\ImagemService;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File; 
 
 class ProdutosController extends Controller
 {
+    private $imagemService;
+
+    public function __construct(ImagemService $imagemService)
+    {
+        $this->imagemService = $imagemService;
+    }
+
     public function index(){
         $produtos = Produto::get();
 
@@ -24,7 +32,7 @@ class ProdutosController extends Controller
     }
 
     public function create(Request $request){
-        Produto::create($this->imagem($request));
+        Produto::create($this->imagemService->criaImagem($request));
 
         return redirect()->route('produto.list');
     }
@@ -43,10 +51,8 @@ class ProdutosController extends Controller
         $produto = Produto::findOrFail($id);  
 
         if(!empty($request->imagem)){
-
-            File::delete(public_path('img/produtos/'.$produto->imagem));
-            $produto->update($this->imagem($request));
-
+            $this->imagemService->deletaImagem($produto);
+            $produto->update($this->criaImagem($request));
         } else {
             $produto->update($request->except('imagem'));
         }
@@ -64,23 +70,10 @@ class ProdutosController extends Controller
 
     public function delete(Request $request, $id){
         $produto = Produto::findOrFail($id);
-        File::delete(public_path('img/produtos/'.$produto->imagem));
+        $this->imagemService->deletaImagem($produto);
         $produto->delete($request->all());
         
         return redirect()->route('produto.list');
-    }
-
-    public function imagem(Request $request){
-        $input = $request->all();
-        request()->validate([
-            'imagem' => 'required|image|mimes:jpeg,png,jpg'
-        ]);
-        $nome = time().'.'.request()->
-            imagem->getClientOriginalExtension();
-        request()->imagem->move(public_path('img/produtos'), $nome);
-        $input['imagem'] = $nome;
-
-        return $input;
     }
 
 }
