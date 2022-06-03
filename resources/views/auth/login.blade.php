@@ -1,4 +1,107 @@
-@extends('layouts.app')
+@extends('layouts.public')
+
+@section('title', 'Ateliê Vovó Branca - Login')
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-center">
+            <form method="POST" action="{{ route('login') }}"> @csrf
+                <div class="d-flex justify-content-center">
+                    <div class="col-sm-10 col-md-8 col-lg-6">
+                        <h1>Por favor, identifique-se :)</h1>
+                        <hr> 
+                        <div class="form-floating mb-3">
+                            <input class="form-control
+                                @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required 
+                                id="email" type="email" autocomplete="email" autofocus placeholder="">                     
+                            <label> E-mail </label>
+
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-floating mb-3">
+                            <input class="form-control
+                                @error('password') is-invalid @enderror"
+                                name="password" required id="password" type="password" autofocus placeholder="">                     
+                            <label> Senha </label>
+
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-check mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
+
+                                <label class="form-check-label" for="remember">
+                                    Lembrar de mim
+                                </label>
+                            </div>
+                        </div>
+
+                        <hr>
+
+                        <button type="submit" class="btn btn-lg btn-danger"> 
+                            Entrar
+                        </button>
+                        <p class="mt-3">
+                        Ainda não é cadastrado ? 
+                        <a href="{{ route('register') }}">Clique aqui</a>
+                        para se cadastrar.
+                        </p>
+
+                        <p class="mt-3">
+                        Esqueceu sua senha ? 
+                        <a href="{{ route('recupera_senha') }}">Clique aqui</a> 
+                        para recuperá-la.
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +173,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

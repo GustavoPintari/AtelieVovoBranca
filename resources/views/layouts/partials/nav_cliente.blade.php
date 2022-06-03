@@ -18,6 +18,11 @@
             <a class="nav-link text-white" 
               href="{{ route('contato') }}">Contato</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" 
+              href="{{ route('logout') }}">Logout</a>
+          </li>
+          
         </ul>
         <div class="align-self-end">
           <ul class="navbar-nav">

@@ -11,9 +11,8 @@
     <body>
         <div class="d-flex flex-column wrapper">
 
-            @component('layouts/_components/nav')      
-            @endcomponent
-
+            @include('layouts.partials.nav_cliente')      
+            
             {{-- <div class="container">
                 <div id="carouselMain" class="carousel slide carousel-dark" data-bs-ride="carousel">
                     <div class="carousel-indicators">

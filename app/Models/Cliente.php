@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+
+class Cliente extends Authenticatable
+{
+    use Notifiable;
+
+    protected $table = 'cliente';
+
+    protected $fillable = [
+        'nome', 'cpf', 'email', 'telefone', 
+        'nascimento', 'senha'
+    ];
+
+    protected $hidden = [
+        'senha', 'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+}

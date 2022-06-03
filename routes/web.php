@@ -1,12 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProdutosController;
-use App\Http\Controllers\CategoriasController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('public/home');
-})->name('home');
+
 
 Route::get('/contato', function () {
     return view('public/contato');
@@ -80,6 +77,18 @@ Route::get('/admin_caixa', function () {
     return view('administrador/admin_caixa');
 })->name('admin_caixa');
 
+
+Route::get('/', function () {
+    return view('public/home');
+})->name('home');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('/logout', 'LogoutController@perform')->name('logout');
+});
+
 Route::prefix('categorias')->name('categoria.')->group(function() {
 
     Route::get('/', 'CategoriasController@index')->name('list');
@@ -122,6 +131,6 @@ Route::prefix('produtos')->name('produto.')->group(function() {
 
 
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
