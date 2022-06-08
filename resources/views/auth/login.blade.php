@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.app')
 
 @section('title', 'Ateliê Vovó Branca - Login')
 
@@ -8,7 +8,9 @@
             <form method="POST" action="{{ route('login') }}"> @csrf
                 <div class="d-flex justify-content-center">
                     <div class="col-sm-10 col-md-8 col-lg-6">
-                        <h1>Por favor, identifique-se :)</h1>
+                        <h1 class="text-center">
+                            Por favor, identifique-se :)
+                        </h1>
                         <hr> 
                         <div class="form-floating mb-3">
                             <input class="form-control
@@ -30,40 +32,49 @@
                                 name="password" required id="password" type="password" autofocus placeholder="">                     
                             <label> Senha </label>
 
-                            @error('password')
+                            @error('senha')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
 
-                        <div class="form-check mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                {{ old('remember') ? 'checked' : '' }}>
+                        <hr>
+                        
+                        <div class="d-flex justify-content-between">
+                             <div class="form-check">         
+                                <input class="form-check-input" 
+                                    type="checkbox" name="remember"
+                                    id="remember"
+                                    {{ old('remember') ? 'checked' : '' }}>
 
                                 <label class="form-check-label" for="remember">
                                     Lembrar de mim
                                 </label>
-                            </div>
+                            </div>      
+                            <button type="submit"
+                                class="btn btn-lg btn-danger mb-2"> 
+                                Entrar
+                            </button>
                         </div>
 
-                        <hr>
+                        <div class="mt-4"> 
+                            <div class="d-flex justify-content-end">
+                                <p>
+                                    Ainda não é cadastrado ? 
+                                    <a href="{{ route('register') }}">
+                                        aqui</a> para se cadastrar.  
+                                </p> 
+                            </div>
 
-                        <button type="submit" class="btn btn-lg btn-danger"> 
-                            Entrar
-                        </button>
-                        <p class="mt-3">
-                        Ainda não é cadastrado ? 
-                        <a href="{{ route('register') }}">Clique aqui</a>
-                        para se cadastrar.
-                        </p>
-
-                        <p class="mt-3">
-                        Esqueceu sua senha ? 
-                        <a href="{{ route('recupera_senha') }}">Clique aqui</a> 
-                        para recuperá-la.
-                        </p>
+                            <div class="d-flex justify-content-end">
+                                <p>
+                                    Esqueceu sua senha ? Clique
+                                    <a href="{{ route('recupera_senha') }}">
+                                        aqui</a> para recuperá-la.  
+                                </p>                      
+                            </div>                               
+                        </div>                        
                     </div>
                 </div>
             </form>

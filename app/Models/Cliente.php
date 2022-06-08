@@ -14,14 +14,15 @@ class Cliente extends Authenticatable
 
     protected $fillable = [
         'nome', 'cpf', 'email', 'telefone', 
-        'nascimento', 'senha'
+        'nascimento', 'password'
     ];
 
     protected $hidden = [
-        'senha', 'remember_token',
+        'password', 'remember_token',
     ];
 
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 }

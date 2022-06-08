@@ -17,7 +17,7 @@ class CreateClienteTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('telefone', 14);
             $table->date('nascimento');
-            $table->string('senha');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
