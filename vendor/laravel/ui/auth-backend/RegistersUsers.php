@@ -12,16 +12,6 @@ trait RegistersUsers
     use RedirectsUsers;
 
     /**
-     * Show the application registration form.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function showRegistrationForm()
-    {
-        return view('auth.register');
-    }
-
-    /**
      * Handle a registration request for the application.
      *
      * @param  \Illuminate\Http\Request  $request

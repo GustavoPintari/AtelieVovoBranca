@@ -17,27 +17,31 @@ class ProdutosController extends Controller
         $this->imagemService = $imagemService;
     }
 
-    public function index(){
+    public function index()
+    {
         $produtos = Produto::get();
 
         return view('administrador.produtos.list',
             compact('produtos'));
     }
 
-    public function novo(){
+    public function novo()
+    {
         $categorias = Categoria::get();
     
         return view('administrador.produtos.create', 
             compact('categorias'));
     }
 
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         Produto::create($this->imagemService->criaImagem($request));
 
         return redirect()->route('produto.list');
     }
 
-    public function atualizar($id){
+    public function atualizar($id)
+    {
         $categoria = Categoria::get();
         $produto = Produto::findOrFail($id);
         $atual = $produto->categoria()->first();
@@ -46,11 +50,13 @@ class ProdutosController extends Controller
             compact('categoria', 'produto', 'atual'));        
     }
 
-    public function update(Request $request, $id){
+    public function update(Request $request, $id)
+    {
         
         $produto = Produto::findOrFail($id);  
 
-        if(!empty($request->imagem)){
+        if(!empty($request->imagem))
+        {
             $this->imagemService->deletaImagem($produto);
             $produto->update($this->imagemService->criaImagem($request));
         } else {
@@ -60,7 +66,8 @@ class ProdutosController extends Controller
         return redirect()->route('produto.list');
     }
 
-    public function remover($id){
+    public function remover($id)
+    {
         $produto = Produto::findOrFail($id);
         $atual = $produto->categoria()->first();
 
@@ -68,7 +75,8 @@ class ProdutosController extends Controller
             compact('produto', 'atual'));
     }
 
-    public function delete(Request $request, $id){
+    public function delete(Request $request, $id)
+    {
         $produto = Produto::findOrFail($id);
         $this->imagemService->deletaImagem($produto);
         $produto->delete($request->all());

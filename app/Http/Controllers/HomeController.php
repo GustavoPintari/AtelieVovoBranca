@@ -1,13 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
+use App\Models\Produto;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('public.home');
+        $produtos = Produto::get();
+
+        return view('public.home', compact('produtos'));
     }
 }

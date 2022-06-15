@@ -7,7 +7,7 @@
                 CNPJ 99.999.999/0001-99
             </div>
             <div class="col-12 col-md-4 text-center">
-                <a href="{{ route('privacidade') }}" 
+                <a href="{{ route('politicas') }}" 
                   class="text-decoration-none text-dark">
                     Política de Privacidade
                 </a><br>

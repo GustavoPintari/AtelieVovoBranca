@@ -43,8 +43,7 @@
             </select>
         </div>
 
-        <div class="mb-3">
-            {{-- <img src="{{ asset("img/produtos/".$produto->imagem)}}"> --}}
+        <div class="mb-3">         
             <label for="imagem" class="form-label">
                 Adicione a nova Imagem do Produto:
             </label>     

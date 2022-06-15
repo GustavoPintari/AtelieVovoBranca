@@ -13,8 +13,8 @@ class Cliente extends Authenticatable
     protected $table = 'cliente';
 
     protected $fillable = [
-        'nome', 'cpf', 'email', 'telefone', 
-        'nascimento', 'password'
+        'nome', 'sobrenome', 'cpf', 'email', 'celular', 
+        'telefone', 'nascimento', 'password', 'endereco_id'
     ];
 
     protected $hidden = [
@@ -24,5 +24,10 @@ class Cliente extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function endereco()
+    {
+        return $this->belongsTo(Endereco::class, 'endereco_id', 'id');
+    }
 
 }

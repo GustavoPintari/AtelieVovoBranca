@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use App\Models\Cliente;
+use App\Models\Endereco;
 
 class RegisterController extends Controller
 {
@@ -32,13 +33,32 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function index()
+    {
+        return view('auth.register');
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
+
+            //Cliente
             'nome' => ['required', 'string', 'max:255'],
+            'sobrenome' => ['required', 'string', 'max:255'],
             'cpf' => ['required', 'string', 'max:14', 'unique:cliente'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:cliente'],
+            'email' => [
+                'required', 'string', 'email',
+                'max:255','unique:cliente'
+            ],
             'nascimento' => ['required'],
+            'celular' => ['required', 'string', 'max:14'],
+            
+            //Endereço
+            'cep' => ['required', 'string', 'max:14'],
+            'bairro' => ['required', 'string', 'max:60'],
+            'numero' => ['required', 'max:6'],
+
+            //Senha
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['required'],
         ]);
@@ -46,12 +66,17 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+        $endereco = Endereco::create($data);
+
         return Cliente::create([
-            'nome' => $data['nome'],
+            'nome' => $data['nome'], 
+            'sobrenome' => $data['sobrenome'],
             'cpf' => $data['cpf'],
             'nascimento' => $data['nascimento'],
             'email' => $data['email'],
+            'celular' => $data['celular'],
             'telefone' => $data['telefone'],
+            'endereco_id' => $endereco->id,
             'password' => Hash::make($data['password'])
         ]);
     }

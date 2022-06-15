@@ -25,7 +25,7 @@
             <ul class="navbar-nav">
               <li class="nav-item">
                   <a class="nav-link text-white" 
-                    href="{{ route('cadastro') }}">Minha Conta</a>
+                    href="{{ route('dados') }}">Minha Conta</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-white" 

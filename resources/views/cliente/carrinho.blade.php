@@ -1,133 +1,112 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-    <head>
-        @component('layouts/_components/head')
-        @endcomponent
+@section('title', 'Ateliê Vovó Branca - Carrinho')
 
-        <title>Ateliê Vovó Branca :: Carrinho de Compras</title>
-    </head>
-
-    <body>
-        <div class="d-flex flex-column wrapper">
-            
-            @component('layouts/_components/nav')      
-            @endcomponent
-
-            <main class="flex-fill">
-                <div class="container">
-                    <h1>Carrinho de Compras</h1>
-                    <ul class="list-group mb-3">
-                        <li class="list-group-item py-3">
-                            <div class="row g-3">
-                                <div class="col-4 col-md-3 col-lg-2">
-                                    <a href="#">
-                                        <img src="{{ asset('img/produtos/000010.png')}}"
-                                          class="img-thumbnail">
-                                    </a>
-                                </div>
-                                <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left 
-                                  align-self-center">
-                                    <h4>
-                                        <b>
-                                           <a href="#" class="text-decoration-none text-dark">
-                                                Boneco de Pano com Macacão Tamanho G
-                                            </a>
-                                        </b>
-                                    </h4>
-                                </div>
-                                <div class="col-6 offset-6 col-sm-6 offset-sm-6 
-                                      col-md-4 offset-md-8 col-lg-3 offset-lg-0 
-                                      col-xl-2 align-self-center mt-3">
-                                    <div class="input-group">
-                                        <button class="btn btn-outline-dark btn-sm" type="button">
-                                            <i class="bi-caret-down" 
-                                              style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                        <input type="text" class="form-control 
-                                          text-center border-dark" value="1">
-                                        <button class="btn btn-outline-dark btn-sm" type="button">
-                                            <i class="bi-caret-up"
-                                             style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger 
-                                          border-dark btn-sm" type="button">
-                                            <i class="bi-trash" 
-                                              style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                    </div>
-                                    <div class="text-end mt-2">
-                                        <span class="text-dark">Valor Item: R$ 99,90</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item py-3">
-                            <div class="row g-3">
-                                <div class="col-4 col-md-3 col-lg-2">
-                                    <a href="#">
-                                        <img src="{{ asset('img/produtos/000011.png')}}"
-                                          class="img-thumbnail">
-                                    </a>
-                                </div>
-                                <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left 
-                                  align-self-center">
-                                    <h4>
-                                        <b>
-                                           <a href="#" class="text-decoration-none text-dark">
-                                                Boneca de Pano Porta Papel Higiênico
-                                            </a>
-                                        </b>
-                                    </h4>
-                                </div>
-                                <div class="col-6 offset-6 col-sm-6 offset-sm-6 
-                                      col-md-4 offset-md-8 col-lg-3 offset-lg-0 
-                                      col-xl-2 align-self-center mt-3">
-                                    <div class="input-group">
-                                        <button class="btn btn-outline-dark btn-sm" type="button">
-                                            <i class="bi-caret-down" 
-                                              style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                        <input type="text" class="form-control 
-                                          text-center border-dark" value="1">
-                                        <button class="btn btn-outline-dark btn-sm" type="button">
-                                            <i class="bi-caret-up"
-                                             style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                        <button class="btn btn-outline-danger 
-                                          border-dark btn-sm" type="button">
-                                            <i class="bi-trash" 
-                                              style="font-size: 16px; line-height: 16px;"></i>
-                                        </button>
-                                    </div>
-                                    <div class="text-end mt-2">
-                                        <span class="text-dark">Valor Item: R$ 119,90</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item py-3">
-                            <div class="text-end">
-                                <h4 class="text-dark mb-3">
-                                    Valor Total: R$ 219.80
-                                </h4>
-                                <a href="{{ route('home') }}" class="btn btn-outline-success btn-lg">
-                                    Continuar Comprando                            
+@section('content')
+    <div class="container">
+        <h1>Carrinho de Compras</h1>
+        <ul class="list-group mb-3">
+            <li class="list-group-item py-3">
+                <div class="row g-3">
+                    <div class="col-4 col-md-3 col-lg-2">
+                        <a href="#">
+                            <img src="{{ asset('img/produtos/000010.png')}}"
+                                class="img-thumbnail">
+                        </a>
+                    </div>
+                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left 
+                        align-self-center">
+                        <h4>
+                            <b>
+                                <a href="#" class="text-decoration-none text-dark">
+                                    Boneco de Pano com Macacão Tamanho G
                                 </a>
-                                <a href="/fechamento_itens.html" class="btn btn-danger btn-lg ms-2 mt-xs-3">Fechar Compra</a>
-                            </div>
-                        </li>
-                    </ul>
+                            </b>
+                        </h4>
+                    </div>
+                    <div class="col-6 offset-6 col-sm-6 offset-sm-6 
+                            col-md-4 offset-md-8 col-lg-3 offset-lg-0 
+                            col-xl-2 align-self-center mt-3">
+                        <div class="input-group">
+                            <button class="btn btn-outline-dark btn-sm" type="button">
+                                <i class="bi-caret-down" 
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                            <input type="text" class="form-control 
+                                text-center border-dark" value="1">
+                            <button class="btn btn-outline-dark btn-sm" type="button">
+                                <i class="bi-caret-up"
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                            <button class="btn btn-outline-danger 
+                                border-dark btn-sm" type="button">
+                                <i class="bi-trash" 
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <span class="text-dark">Valor Item: R$ 99,90</span>
+                        </div>
+                    </div>
                 </div>
-            </main>
+            </li>
+            <li class="list-group-item py-3">
+                <div class="row g-3">
+                    <div class="col-4 col-md-3 col-lg-2">
+                        <a href="#">
+                            <img src="{{ asset('img/produtos/000011.png')}}"
+                                class="img-thumbnail">
+                        </a>
+                    </div>
+                    <div class="col-8 col-md-9 col-lg-7 col-xl-8 text-left 
+                        align-self-center">
+                        <h4>
+                            <b>
+                                <a href="#" class="text-decoration-none text-dark">
+                                    Boneca de Pano Porta Papel Higiênico
+                                </a>
+                            </b>
+                        </h4>
+                    </div>
+                    <div class="col-6 offset-6 col-sm-6 offset-sm-6 
+                            col-md-4 offset-md-8 col-lg-3 offset-lg-0 
+                            col-xl-2 align-self-center mt-3">
+                        <div class="input-group">
+                            <button class="btn btn-outline-dark btn-sm" type="button">
+                                <i class="bi-caret-down" 
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                            <input type="text" class="form-control 
+                                text-center border-dark" value="1">
+                            <button class="btn btn-outline-dark btn-sm" type="button">
+                                <i class="bi-caret-up"
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                            <button class="btn btn-outline-danger 
+                                border-dark btn-sm" type="button">
+                                <i class="bi-trash" 
+                                    style="font-size: 16px; line-height: 16px;"></i>
+                            </button>
+                        </div>
+                        <div class="text-end mt-2">
+                            <span class="text-dark">Valor Item: R$ 119,90</span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="list-group-item py-3">
+                <div class="text-end">
+                    <h4 class="text-dark mb-3">
+                        Valor Total: R$ 219.80
+                    </h4>
+                    <a href="{{ route('home') }}" class="btn btn-outline-success btn-lg">
+                        Continuar Comprando                            
+                    </a>
+                    <a href="/fechamento_itens.html" class="btn btn-danger btn-lg ms-2 mt-xs-3">Fechar Compra</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+@endsection
 
-            @component('layouts/_components/footer')   
-            @endcomponent  
-        </div>
-        
-        @component('layouts/_components/scripts')   
-        @endcomponent
 
-    </body>
-
-</html>

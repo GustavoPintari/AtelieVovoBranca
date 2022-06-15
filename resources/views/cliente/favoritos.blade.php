@@ -1,4 +1,71 @@
-<!doctype html>
+@extends('layouts.cliente')
+
+@section('title', 'Ateliê Vovó Branca - Favoritos')
+@section('set', 'Favoritos')
+
+@section('form')
+    <div class="row g-3">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card text-center bg-light">
+                <a href="#" class="position-absolute end-0 p-2 text-danger">
+                    <i class="bi-suit-heart-fill" style="font-size: 24px;
+                        line-height: 24px;"></i>
+                </a>
+                <img src="{{ asset('img/produtos/000008.png') }}" 
+                    class="card-img-top">
+                <div class="card-header">
+                    <h5 class="card-title truncar-2l">
+                        Kit Bonecas de Pano de Vestido
+                    </h5>
+                </div>
+                <div class="card-body">
+                    R$ 330,00
+                </div>
+                <div class="card-footer">
+                    <a href="{{ route('carrinho' )}}" class="btn btn-danger mt-2 d-block">
+                        Adicionar ao Carrinho
+                    </a>
+                    <small class="text-sucess">2 em estoque</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+            <div class="card text-center bg-light">
+                <a href="#" class="position-absolute end-0 p-2 text-danger">
+                    <i class="bi-suit-heart-fill" style="font-size: 24px;
+                        line-height: 24px;"></i>
+                </a>
+                <img src="{{ asset('img/produtos/000003.png') }}"
+                    class="card-img-top">
+                <div class="card-header">
+                    <h5 class="card-title truncar-2l">
+                        Kit Para Nicho Bonecas de Pano Bailarinas
+                    </h5>
+                </div>
+                <div class="card-body">
+                    R$ 329,90
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn btn-light disabled mt-2 d-block">
+                        <small>Reabastecendo Estoque</small>
+                    </a>
+                    <small class="text-danger">
+                        <b>Produto Esgotado</b>
+                    </small>
+                </div>
+            </div>
+        </div>                    
+    </div>
+@endsection
+
+
+
+
+
+
+
+
+{{-- <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
     <head>
@@ -117,4 +184,4 @@
 
     </body>
 
-</html>
+</html> --}}
