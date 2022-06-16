@@ -61,6 +61,14 @@ Route::get('/admin_caixa', function () {
 
 
 Route::get('/dados', 'ClienteController@index')->name('dados');
+Route::get('/endereco', 'ClienteController@endereco')->name('endereco');
+
+Route::get('/endereco', 'ClienteController@atualizarEndereco')
+    ->name('update.endereco')
+->name('endereco');
+
+Route::put('/endereco', 'ClienteController@updateEndereco')
+->name('endereco');
 
 Auth::routes();
 
@@ -68,6 +76,28 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('/cadastro', 'Auth\RegisterController@index')->name('cadastro'); 
+
+
+Route::prefix('dados')->name('dados.')->group(function(){
+
+    Route::get('/', 'ClienteController@dados')->name('index');
+
+    Route::prefix('editar')->group(function(){
+        Route::get('/', 'ClienteController@atualizarDados')->name('update');
+        Route::put('/', 'ClienteController@updateDados');
+    });
+});
+
+Route::prefix('endereco')->name('endereco.')->group(function(){
+
+    Route::get('/', 'ClienteController@endereco')->name('index');
+
+    Route::prefix('editar')->group(function(){
+        Route::get('/', 'ClienteController@atualizarEndereco')->name('update');
+    });
+});
+
+
 
 
 Route::prefix('categorias')->name('categoria.')->group(function() {

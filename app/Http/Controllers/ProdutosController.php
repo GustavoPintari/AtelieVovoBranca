@@ -52,7 +52,6 @@ class ProdutosController extends Controller
 
     public function update(Request $request, $id)
     {
-        
         $produto = Produto::findOrFail($id);  
 
         if(!empty($request->imagem))

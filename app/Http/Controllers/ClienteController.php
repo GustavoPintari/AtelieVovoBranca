@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Models\Cliente;
+use App\Models\Endereco;
+use App\Http\Requests\DadosRequest;
+
 
 class ClienteController extends Controller
 {
@@ -12,11 +16,32 @@ class ClienteController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function dados(Request $request)
     {
         $cliente = Cliente::findOrFail($request->user()->id);
-        
-        return view('cliente.dados', compact('cliente'));
+        return view('cliente.dados.index', compact('cliente'));
+    }
+
+    public function atualizarDados(Request $request)
+    {
+        $cliente = Cliente::findOrFail($request->user()->id);
+        return view('cliente.dados.update', compact('cliente'));
+    }
+
+    public function updateDados(DadosRequest $request)
+    {
+        $cliente = Cliente::findOrFail($request->user()->id);
+        $cliente->update($request);
+
+        return redirect()->route('cliente.dados.index');
+    }
+
+    public function endereco(Request $request)
+    {
+        $cliente = Cliente::findOrFail($request->user()->id);
+        $endereco = $cliente->endereco()->first();
+
+        return view('cliente.endereco', compact('endereco'));
     }
 
 }

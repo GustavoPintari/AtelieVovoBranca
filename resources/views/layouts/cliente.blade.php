@@ -21,35 +21,40 @@
                     <div class="row gx-3">
                         <div class="col-4">
                             <div class="list-group">
-                                <a href="{{ route('dados') }}"
+                                <a href="{{ route('dados.index') }}"
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('dados*')) 
                                         bg-danger text-light @endif">
-                                    <i class="bi-person fs-6"></i> Dados Pessoais
+                                    <i class="bi-person fs-6"></i> 
+                                    Dados Pessoais
                                 </a>
-                                <a href="{{ route('endereco') }}" 
+                                <a href="{{ route('endereco.index') }}" 
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('endereco*')) 
                                         bg-danger text-light @endif">
-                                    <i class="bi-house-door fs-6"></i> Endereço
+                                    <i class="bi-house-door fs-6"></i> 
+                                    Endereço
                                 </a>
                                 <a href="{{ route('pedidos') }}" 
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('pedidos*')) 
                                         bg-danger text-light @endif">
-                                    <i class="bi-truck fs-6"></i> Pedidos
+                                    <i class="bi-truck fs-6"></i> 
+                                    Pedidos
                                 </a>
                                 <a href="{{ route('favoritos') }}" 
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('pedidos*')) 
                                         bg-danger text-light @endif">
-                                    <i class="bi-heart fs-6"></i> Favoritos
+                                    <i class="bi-heart fs-6"></i> 
+                                    Favoritos
                                 </a>
                                 <a href="/cliente_senha.html" 
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('pedidos*')) 
                                         bg-danger text-light @endif">
-                                    <i class="bi-lock fs-6"></i> Alterar Senha
+                                    <i class="bi-lock fs-6"></i> 
+                                    Alterar Senha
                                 </a>      
                             </div>
                         </div>

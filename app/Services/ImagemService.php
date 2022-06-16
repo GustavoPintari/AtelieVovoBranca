@@ -6,9 +6,10 @@ use App\Models\Produto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class ImagemService {
-
-    public function criaImagem(Request $request){
+class ImagemService 
+{
+    public function criaImagem(Request $request)
+    {
         $input = $request->all();
         request()->validate([
             'imagem' => 'required|image|mimes:jpeg,png,jpg'
@@ -21,13 +22,12 @@ class ImagemService {
         return $input;
     }
 
-    public function deletaImagem(Produto $p){
+    public function deletaImagem(Produto $p)
+    {
         $imagemAtual = public_path('img/produtos/'.$p->imagem);
-        if(file_exists($imagemAtual)){
+        if(file_exists($imagemAtual))
+        {
             File::delete($imagemAtual);
         }
     }
-
-
-
 }

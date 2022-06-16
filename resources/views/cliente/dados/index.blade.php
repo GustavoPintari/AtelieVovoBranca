@@ -59,14 +59,17 @@
                 <label for="telefone"> Telefone </label>
             </div>        
         </div>
-        <div class="d-flex flex-row-reverse">
-            <div class="mb-3">
-                <input type="submit" value="Alterar Informações"
-                    class="btn btn-lg btn-danger">
-            </div>
-        </div>
     </form>
+    <div class="d-flex flex-row-reverse">
+        <div class="mb-3">
+            <button class="btn btn-lg btn-danger"
+                onclick="window.location.href= 
+                '{{ route('dados.update') }}'"> Alterar Informações
+            </button>
+        </div>
+    </div>
 @endsection
+
 
 
 
