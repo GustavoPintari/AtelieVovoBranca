@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 use App\Models\Cliente;
@@ -35,33 +34,7 @@ class RegisterController extends Controller
 
     public function index()
     {
-        return view('auth.register');
-    }
-
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-
-            //Cliente
-            'nome' => ['required', 'string', 'max:255'],
-            'sobrenome' => ['required', 'string', 'max:255'],
-            'cpf' => ['required', 'string', 'max:14', 'unique:cliente'],
-            'email' => [
-                'required', 'string', 'email',
-                'max:255','unique:cliente'
-            ],
-            'nascimento' => ['required'],
-            'celular' => ['required', 'string', 'max:14'],
-            
-            //Endereço
-            'cep' => ['required', 'string', 'max:14'],
-            'bairro' => ['required', 'string', 'max:60'],
-            'numero' => ['required', 'max:6'],
-
-            //Senha
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'password_confirmation' => ['required'],
-        ]);
+        return view('auth.cadastro');
     }
 
     protected function create(array $data)

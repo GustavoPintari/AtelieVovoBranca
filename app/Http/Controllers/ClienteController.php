@@ -16,6 +16,12 @@ class ClienteController extends Controller
         $this->middleware('auth');
     }
 
+    public function cadastroConcluido(Request $request)
+    {
+        $cliente = Cliente::findOrFail($request->user()->id);
+        return view('cliente.concluido', compact('cliente'));
+    }
+
     public function dados(Request $request)
     {
         $cliente = Cliente::findOrFail($request->user()->id);
@@ -31,9 +37,9 @@ class ClienteController extends Controller
     public function updateDados(DadosRequest $request)
     {
         $cliente = Cliente::findOrFail($request->user()->id);
-        $cliente->update($request);
+        $cliente->update($request->all());
 
-        return redirect()->route('cliente.dados.index');
+        return redirect()->route('dados.index');
     }
 
     public function endereco(Request $request)

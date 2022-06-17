@@ -3,32 +3,37 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
+use App\Rules\Cpf;
+
 
 class DadosRequest extends FormRequest
 {
+
     public function authorize()
     {
         return true;
     }
 
-    public function rules()
+    public function rules(Request $request)
     {
         return [
             'nome' => ['required', 'string', 'min:3', 'max:60'],
             'sobrenome' => ['required', 'string', 'min:3', 'max:60'],
 
             'cpf' => [
-                'required', 'string', 'size:13',
-                'unique:cliente'
+                'required', new Cpf,
+                'unique:cliente,cpf,' . $request->user()->id,
             ],
 
             'email' => [
-                'required', 'string', 'email',
-                'max:60','unique:cliente'
-            ],
+                'required', 'min:6', 'max:60', 'email', 
+                'unique:cliente,email,' . $request->user()->id,
+            ], 
+
             'nascimento' => ['required', 'date'],
-            'celular' => ['required', 'string', 'min:14', 'max:14'],
-            'telefone' => ['nullable', 'string', 'min:14', 'max:14'],
+            'celular' => ['required', 'string', 'size:10'],
+            'telefone' => ['nullable', 'string', 'size:10'],
         ];
     } 
 
@@ -43,10 +48,16 @@ class DadosRequest extends FormRequest
             'sobrenome.max' => 'Campo deve conter no máximo até 60 caracteres',
             'sobrenome.required' => 'Campo sobrenome é obrigatório',
 
-            'email.unique' => 'Este email já está em uso'
-    
+            'cpf.unique' => 'Este cpf já está em uso',
+            'cpf.required' => 'Campo cpf é obrigatório',
 
+            'email.min' => 'Campo deve conter pelo menos 6 caracteres',
+            'email.max' => 'Campo deve conter no máximo até 60 caracteres',
+            'email.unique' => 'Este email já está em uso',
+            'email.required' => 'Campo email é obrigatório',
 
+            'nascimento.required' => 'Campo data de nascimento é obrigatório',
+            
         ];
     }
     

@@ -26,16 +26,6 @@ Route::get('/confirma_senha', function () {
 })->name('confirma_senha');
 
 
-
-Route::get('/confirma_cadastro', function () {
-    return view('public/confirma_cadastro');
-})->name('confirma_cadastro');
-
-
-
-
-
-
 Route::get('/endereco', function () {
     return view('cliente.endereco');
 })->name('endereco');
@@ -55,28 +45,32 @@ Route::get('/admin_relatorios', function () {
     return view('administrador/admin_relatorios');
 })->name('admin_relatorios');
 
-Route::get('/admin_caixa', function () {
-    return view('administrador/admin_caixa');
-})->name('admin_caixa');
+Route::get('/teste', function () {
+    return view('auth.passwords.confirm');
+});
+
 
 
 Route::get('/dados', 'ClienteController@index')->name('dados');
 Route::get('/endereco', 'ClienteController@endereco')->name('endereco');
 
-Route::get('/endereco', 'ClienteController@atualizarEndereco')
-    ->name('update.endereco')
-->name('endereco');
 
-Route::put('/endereco', 'ClienteController@updateEndereco')
-->name('endereco');
 
 Auth::routes();
+
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/login', 'Auth\LoginController@index')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('/cadastro', 'Auth\RegisterController@index')->name('cadastro'); 
 
+Route::get(
+    '/concluido','ClienteController@cadastroConcluido'
+)->name('concluido');
+
+Route::prefix('cadastro')->name('cadastro.')->group(function(){
+    Route::get('/', 'Auth\RegisterController@index')->name('create'); 
+    Route::post('/', 'Auth\RegisterController@register'); 
+});
 
 Route::prefix('dados')->name('dados.')->group(function(){
 
@@ -96,9 +90,6 @@ Route::prefix('endereco')->name('endereco.')->group(function(){
         Route::get('/', 'ClienteController@atualizarEndereco')->name('update');
     });
 });
-
-
-
 
 Route::prefix('categorias')->name('categoria.')->group(function() {
 

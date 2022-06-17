@@ -14,8 +14,8 @@
                     <div class="form-floating mb-3">
                         <input class="form-control
                             @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required 
-                            id="email" type="email" autocomplete="email" autofocus placeholder="">                     
+                            name="email" value="{{ old('email') }}" 
+                            id="email" type="email" placeholder="">                     
                         <label> E-mail </label>
 
                         @error('email')
@@ -28,10 +28,10 @@
                     <div class="form-floating mb-3">
                         <input class="form-control
                             @error('password') is-invalid @enderror"
-                            name="password" required id="password" type="password" autofocus placeholder="">                     
+                            name="password" id="password" type="password" placeholder="">                     
                         <label> Senha </label>
 
-                        @error('senha')
+                        @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -61,7 +61,7 @@
                         <div class="d-flex justify-content-end">
                             <p>
                                 Ainda não é cadastrado ? 
-                                <a href="{{ route('cadastro') }}">
+                                <a href="{{ route('cadastro.create') }}">
                                     aqui</a> para se cadastrar.  
                             </p> 
                         </div>

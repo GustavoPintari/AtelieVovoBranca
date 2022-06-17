@@ -7,20 +7,14 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Requests\CadastroRequest;
+
 trait RegistersUsers
 {
     use RedirectsUsers;
 
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
-     */
-    public function register(Request $request)
+    public function register(CadastroRequest $request)
     {
-        $this->validator($request->all())->validate();
-
         event(new Registered($user = $this->create($request->all())));
 
         $this->guard()->login($user);
@@ -31,7 +25,13 @@ trait RegistersUsers
 
         return $request->wantsJson()
                     ? new JsonResponse([], 201)
-                    : redirect($this->redirectPath());
+                    : redirect()->route('concluido');
+                    //: redirect($this->redirectPath());
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('auth.cadastro');
     }
 
     /**

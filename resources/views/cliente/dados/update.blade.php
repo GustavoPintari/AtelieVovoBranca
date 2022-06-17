@@ -39,10 +39,16 @@
 
         <div class="row gx-1">
             <div class="form-floating mb-3 col-12 col-lg-6">
-                <input class="form-control
+                <input class="form-control 
                     @error('cpf') is-invalid @enderror"
-                    name="cpf" value="{{ $cliente->cpf }}"
-                    type="text" id="cpf">
+                    name="cpf" type="text" id="cpf"
+                    
+                    @if($errors->has('cpf'))
+                        value=""
+                    @else
+                        value="{{ $cliente->cpf }}"
+                    @endif>
+
                 <label for="cpf"> CPF </label>
 
                 @error('cpf')
@@ -70,8 +76,13 @@
         <div class="form-floating mb-3 col-12">
             <input class="form-control
                 @error('email') is-invalid @enderror"
-                name="email" value="{{ $cliente->email }}"
-                type="email" id="email">
+                type="email" id="email" name="email"
+                @if($errors->has('email'))
+                    value=""
+                @else
+                    value="{{ $cliente->email }}"
+                @endif>
+             
             <label for="email"> E-mail </label>  
 
             @error('email')
@@ -112,7 +123,10 @@
         </div>
         <div class="d-flex flex-row-reverse">
             <div class="mb-3">
-                <input type="submit" value="Alterar Informações"
+                <a class="btn btn-lg btn-light btn-outline-danger" 
+                    href="{{ route('dados.index') }}"> Cancelar
+                </a>
+                <input type="submit" value="Confirmar"
                     class="btn btn-lg btn-danger">
             </div>
         </div>

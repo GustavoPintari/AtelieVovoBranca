@@ -4,6 +4,7 @@ namespace Illuminate\Foundation\Auth;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -29,10 +30,8 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $this->validateLogin($request);
-
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.
@@ -63,14 +62,7 @@ trait AuthenticatesUsers
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    protected function validateLogin(Request $request)
-    {
-        $request->validate([
-            $this->username() => 'required|string',
-            'password' => 'required|string',
-        ]);
-    }
-
+    
     /**
      * Attempt to log the user into the application.
      *
@@ -173,7 +165,7 @@ trait AuthenticatesUsers
 
         return $request->wantsJson()
             ? new JsonResponse([], 204)
-            : redirect('/');
+            : redirect('/login');
     }
 
     /**

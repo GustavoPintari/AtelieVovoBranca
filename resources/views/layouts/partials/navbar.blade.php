@@ -58,7 +58,7 @@
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link text-white" 
-                          href="{{ route('cadastro') }}">Cadastrar</a>
+                          href="{{ route('cadastro.create') }}">Cadastrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-white" 
