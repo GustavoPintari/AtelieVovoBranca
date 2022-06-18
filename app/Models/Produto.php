@@ -24,4 +24,11 @@ class Produto extends Model
             Pedido::class, 'detalhe_pedido', 'produto_id', 'pedido_id'
         );
     }
+
+    public function favoritos()
+    {
+        return $this->belongsToMany(
+            Produto::class, 'favorito', 'produto_id', 'cliente_id'
+        );
+    }
 }

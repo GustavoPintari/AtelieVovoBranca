@@ -34,9 +34,6 @@ Route::get('/pedidos', function () {
     return view('cliente.pedidos');
 })->name('pedidos');
 
-Route::get('/favoritos', function () {
-    return view('cliente.favoritos');
-})->name('favoritos');
 
 
 
@@ -49,10 +46,6 @@ Route::get('/teste', function () {
     return view('auth.passwords.confirm');
 });
 
-
-
-Route::get('/dados', 'ClienteController@index')->name('dados');
-Route::get('/endereco', 'ClienteController@endereco')->name('endereco');
 
 
 
@@ -89,6 +82,15 @@ Route::prefix('endereco')->name('endereco.')->group(function(){
     Route::prefix('editar')->group(function(){
         Route::get('/', 'ClienteController@atualizarEndereco')->name('update');
     });
+});
+
+Route::prefix('favoritos')->name('favoritos.')->group(function(){
+
+    Route::get('/', 'FavoritosController@index')->name('index');
+
+    Route::get('/{id}', 'FavoritosController@create')->name('create');
+
+    Route::get('/{id}/remover', 'FavoritosController@delete')->name('delete');
 });
 
 Route::prefix('categorias')->name('categoria.')->group(function() {

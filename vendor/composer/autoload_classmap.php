@@ -35,6 +35,7 @@ return array(
     'App\\Http\\Requests\\LoginRequest' => $baseDir . '/app/Http/Requests/LoginRequest.php',
     'App\\Models\\Categoria' => $baseDir . '/app/Models/Categoria.php',
     'App\\Models\\Cliente' => $baseDir . '/app/Models/Cliente.php',
+    'App\\Models\\DetalhePedido' => $baseDir . '/app/Models/DetalhePedido.php',
     'App\\Models\\Endereco' => $baseDir . '/app/Models/Endereco.php',
     'App\\Models\\Pedido' => $baseDir . '/app/Models/Pedido.php',
     'App\\Models\\Produto' => $baseDir . '/app/Models/Produto.php',

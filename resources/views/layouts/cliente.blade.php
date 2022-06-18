@@ -42,16 +42,16 @@
                                     <i class="bi-truck fs-6"></i> 
                                     Pedidos
                                 </a>
-                                <a href="{{ route('favoritos') }}" 
+                                <a href="{{ route('favoritos.index') }}" 
                                     class="list-group-item list-group-item-action
-                                    @if(Request::is('pedidos*')) 
+                                    @if(Request::is('favoritos*')) 
                                         bg-danger text-light @endif">
                                     <i class="bi-heart fs-6"></i> 
                                     Favoritos
                                 </a>
                                 <a href="/cliente_senha.html" 
                                     class="list-group-item list-group-item-action
-                                    @if(Request::is('pedidos*')) 
+                                    @if(Request::is('senha*')) 
                                         bg-danger text-light @endif">
                                     <i class="bi-lock fs-6"></i> 
                                     Alterar Senha

@@ -35,4 +35,10 @@ class Cliente extends Authenticatable
         return $this->hasMany(Pedido::class, 'pedido_id', 'id');
     }
 
+    public function favoritos()
+    {
+        return $this->belongsToMany(
+            Produto::class, 'favorito', 'cliente_id', 'produto_id'
+        );
+    }
 }

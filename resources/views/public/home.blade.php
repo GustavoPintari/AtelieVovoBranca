@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('title', 'Ateliê Vovó Branca - Principal')
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -57,14 +55,24 @@
             @forelse ($produtos as $p)  
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">      
                     <div class="card text-center bg-light">                  
-                        <a href="#" class="position-absolute          
-                            end-0 p-2 text-danger">
-                            <i class="bi-suit-heart" 
-                                style="font-size: 24px;line-height: 24px;">
+                        <a href="{{ route('favoritos.create', $p->id) }}" 
+                            class="position-absolute end-0 p-2 text-danger">
+                            <i  @auth
+                                    @for ($i = 0; $i < count($f); $i++)
+                                        @if ($f[$i] == $p->id)
+                                            class="bi-suit-heart-fill"
+                                            @break
+                                        @endif
+                                    @endfor 
+                                @endauth
+
+                                class="bi-suit-heart" style="font-size:
+                                24px;line-height: 24px;">
                             </i> 
                         </a>
                         <img class="card-img-top"
-                            src="{{ asset("img/produtos/".$p->imagem)}}"> 
+                            src="{{ asset("img/produtos/".$p->imagem)}}"
+                            style="height: 171px; width: 171px;"> 
                         <div class="card-header">
                             <h5 class="card-title truncar-2l">
                                 {{$p->nome}}
@@ -91,7 +99,53 @@
                     <h5> Nenhum Produto Cadastrado </h5>
                 </div>
             @endforelse  
-            {{-- <div>
+        </div>
+
+        <hr class="mt-3">
+
+        <div class="row pb-3">
+            <div class="col-12">
+                <div
+                    class="d-flex flex-row-reverse justify-content-center 
+                        justify-content-md-start">
+                    <form class="d-inline-block">
+                        <select class="form-select form-select-sm">
+                            <option>Ordenar pelo nome</option>
+                            <option>Ordenar pelo menor preço</option>
+                            <option>Ordenar pelo maior preço</option>
+                        </select>
+                    </form>
+                    <nav class="d-inline-block me-3">
+                        <ul class="pagination pagination-sm my-0">
+                            <li class="page-item">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">2</a>
+                            </li>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">5</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">6</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+
+{{-- <div>
                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
                     <div class="card text-center bg-light">
                         <a href="#" class="position-absolute end-0 p-2 text-danger">
@@ -359,47 +413,3 @@
                     </div>
                 </div>
             </div> --}}
-        </div>
-
-        <hr class="mt-3">
-
-        <div class="row pb-3">
-            <div class="col-12">
-                <div
-                    class="d-flex flex-row-reverse justify-content-center 
-                        justify-content-md-start">
-                    <form class="d-inline-block">
-                        <select class="form-select form-select-sm">
-                            <option>Ordenar pelo nome</option>
-                            <option>Ordenar pelo menor preço</option>
-                            <option>Ordenar pelo maior preço</option>
-                        </select>
-                    </form>
-                    <nav class="d-inline-block me-3">
-                        <ul class="pagination pagination-sm my-0">
-                            <li class="page-item">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">4</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">5</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">6</a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-

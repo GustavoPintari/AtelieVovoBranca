@@ -537,6 +537,7 @@ class ComposerStaticInitdb2213d743a76a816ddcc346b853d1a3
         'App\\Http\\Requests\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/LoginRequest.php',
         'App\\Models\\Categoria' => __DIR__ . '/../..' . '/app/Models/Categoria.php',
         'App\\Models\\Cliente' => __DIR__ . '/../..' . '/app/Models/Cliente.php',
+        'App\\Models\\DetalhePedido' => __DIR__ . '/../..' . '/app/Models/DetalhePedido.php',
         'App\\Models\\Endereco' => __DIR__ . '/../..' . '/app/Models/Endereco.php',
         'App\\Models\\Pedido' => __DIR__ . '/../..' . '/app/Models/Pedido.php',
         'App\\Models\\Produto' => __DIR__ . '/../..' . '/app/Models/Produto.php',

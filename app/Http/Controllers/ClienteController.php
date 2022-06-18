@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Produto;
 use App\Models\Cliente;
 use App\Models\Endereco;
-use App\Http\Requests\DadosRequest;
 
+use App\Http\Requests\DadosRequest;
 
 class ClienteController extends Controller
 {
@@ -49,5 +50,4 @@ class ClienteController extends Controller
 
         return view('cliente.endereco', compact('endereco'));
     }
-
 }
