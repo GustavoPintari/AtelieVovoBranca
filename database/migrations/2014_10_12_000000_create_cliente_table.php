@@ -16,7 +16,7 @@ class CreateClienteTable extends Migration
             $table->string('cpf', 14)->unique();
             $table->date('nascimento');
             $table->string('email')->unique(); 
-            $table->string('celular', 14);
+            $table->string('celular', 15);
             $table->string('telefone', 14)->nullable();
             $table->string('password');
 

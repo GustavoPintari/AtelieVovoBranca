@@ -29,12 +29,20 @@ class CadastroRequest extends FormRequest
                 'unique:cliente',
             ], 
 
-            'nascimento' => ['required', 'date'],
-            'celular' => ['required', 'string', 'size:10'],
-            'telefone' => ['nullable', 'string', 'size:10'],
+            'nascimento' => ['required', 'string'],
+            'celular' => ['required', 'string', 'size:15'],
+            'telefone' => ['nullable', 'string', 'size:14'],
 
             'password' => ['required', 'string', 'min:5', 'confirmed'],
             'password_confirmation' => ['required'], 
+
+            'cep' => ['required', 'string', 'size:9'],
+            'uf' => ['required', 'string', 'size:2'],
+            'cidade' => ['required', 'string', 'max:60'],
+            'rua' => ['required', 'string', 'max:60'],
+            'bairro' => ['required', 'string', 'max:60'],
+            'numero' => ['required', 'integer'],
+            'complemento' => ['nullable', 'string'], 
         ];
     }
 
@@ -57,13 +65,35 @@ class CadastroRequest extends FormRequest
             'email.unique' => 'Este email já está em uso',
             'email.required' => 'Campo email é obrigatório',
 
-            'nascimento.required' => 'Campo data de nascimento é obrigatório',
+            'celular.size' => 'O número informado é inválido', 
+            'celular.required' => 'É obrigatório informar um número de      celular',    
+                 
+            'telefone.size' => 'O número informado é inválido',
+
+            'nascimento.required' => 'É obrigatório informar sua data de nascimento',
 
             'password.min' => 'A senha deve conter pelo menos 5 caracteres',
             'password.confirmed' => 'As senhas digitadas não são iguais',
             'password.required' => 'Campo senha é obrigatório',
 
-            'password_confirmation.required' => 'Confirme sua senha'
+            'password_confirmation.required' => 'Confirme sua senha',
+
+            'cep.size' => 'O cep informado é inválido',
+            'cep.required' => 'Campo cep é obrigatório',
+
+            'uf.size' => 'Sigla Inválida',
+            'uf.required' => 'É necessário informar a sigla do seu Estado',
+
+            'cidade.max' => 'Campo inválido',
+            'cidade.required' => 'Campo cidade é obrigatório',
+
+            'rua.max' => 'Campo inválido',
+            'rua.required' => 'Campo rua é obrigatório',
+            
+            'bairro.max' => 'Campo inválido',
+            'bairro.required' => 'Campo bairro é obrigatório',
+
+            'numero.required' => 'Campo número é obrigatório',
         ];
     }
 }

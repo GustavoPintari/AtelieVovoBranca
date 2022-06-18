@@ -11,6 +11,8 @@ class CreateEnderecoTable extends Migration
         Schema::create('endereco', function (Blueprint $table) {
             $table->id();
             $table->string('cep', 9);
+            $table->string('uf', 2);
+            $table->string('cidade', 60);
             $table->string('rua', 60);
             $table->string('bairro', 60);
             $table->integer('numero');

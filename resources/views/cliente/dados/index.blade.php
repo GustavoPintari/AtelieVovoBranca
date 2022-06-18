@@ -32,7 +32,7 @@
             <div class="form-floating mb-3 col-12 col-lg-6">
                 <input class="form-control"
                     name="nascimento" value="{{ $cliente->nascimento }}"
-                    type="date" id="nascimento" disabled>
+                    type="text" id="nascimento" disabled>
                 <label for="nascimento"> Data de Nascimento </label>
             </div>   
         </div>

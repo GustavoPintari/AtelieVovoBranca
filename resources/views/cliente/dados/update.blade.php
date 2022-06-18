@@ -39,7 +39,7 @@
 
         <div class="row gx-1">
             <div class="form-floating mb-3 col-12 col-lg-6">
-                <input class="form-control 
+                <input class="form-control cpf
                     @error('cpf') is-invalid @enderror"
                     name="cpf" type="text" id="cpf"
                     
@@ -59,10 +59,10 @@
             </div>
 
             <div class="form-floating mb-3 col-12 col-lg-6">
-                <input class="form-control
+                <input class="form-control nascimento
                     @error('nascimento') is-invalid @enderror"
                     name="nascimento" value="{{ $cliente->nascimento }}"
-                    type="date" id="nascimento">
+                    type="string" id="nascimento">
                 <label for="nascimento"> Data de Nascimento </label>
 
                 @error('nascimento')
@@ -92,9 +92,9 @@
             @enderror  
         </div>
 
-        <div class="row gx-1">
+        <div class="row gx-1"> 
             <div class="form-floating mb-3 col-12 col-lg-6">
-                <input class="form-control
+                <input class="form-control cellphone
                     @error('celular') is-invalid @enderror"
                     name="celular" value="{{ $cliente->celular }}"
                     type="celular" id="celular">
@@ -108,7 +108,7 @@
             </div>
 
             <div class="form-floating mb-3 col-12 col-lg-6">
-                <input class="form-control
+                <input class="form-control phone
                     @error('telefone') is-invalid @enderror"
                     name="telefone" value="{{ $cliente->telefone }}"
                     type="telefone" id="telefone">

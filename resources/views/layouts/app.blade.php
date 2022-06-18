@@ -26,5 +26,8 @@
 
         <script src="{{ asset('site/jquery.js') }}"></script>
         <script src="{{ asset('site/bootstrap.js') }}"></script>
+
+        @include('layouts.partials.mask')
+        
     </body>
 <html>

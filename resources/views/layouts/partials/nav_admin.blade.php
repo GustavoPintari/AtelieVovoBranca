@@ -27,7 +27,7 @@
             </li>  
             <li class="nav-item">
               <a class="nav-link text-white" 
-                href="{{ route('admin_caixa') }}">Caixa</a>
+                href="#">Caixa</a>
             </li>                         
             <li class="nav-item ms-5">
               <a class="nav-link text-white" 

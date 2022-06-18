@@ -1,3 +1,12 @@
+@extends('layouts.app')
+
+@section('title', 'Ateliê Vovó Branca - Nova senha Solicitada')
+
+@section('content')
+
+@endsection
+
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 

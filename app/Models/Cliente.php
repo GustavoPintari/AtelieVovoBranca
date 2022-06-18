@@ -30,4 +30,9 @@ class Cliente extends Authenticatable
         return $this->belongsTo(Endereco::class, 'endereco_id', 'id');
     }
 
+    public function pedidos()
+    {
+        return $this->hasMany(Pedido::class, 'pedido_id', 'id');
+    }
+
 }

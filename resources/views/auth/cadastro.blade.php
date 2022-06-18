@@ -48,7 +48,7 @@
 
                 <div class="row gx-1">
                     <div class="form-floating mb-3 col-12 col-lg-6">
-                        <input class="form-control
+                        <input class="form-control cpf
                             @error('cpf') is-invalid @enderror"
                             name="cpf" type="text" id="cpf" placeholder=""
                             @if($errors->has('cpf'))
@@ -65,10 +65,10 @@
                     </div>
 
                     <div class="form-floating mb-3 col-12 col-lg-6">
-                        <input class="form-control
+                        <input class="form-control date
                             @error('nascimento') is-invalid @enderror"
                             name="nascimento" value="{{ old('nascimento') }}"
-                            type="date" id="nascimento"
+                            type="text" id="nascimento"
                             placeholder="">
                         <label for="nascimento"> Data de Nascimento </label>
                         @error('nascimento')
@@ -99,7 +99,7 @@
 
                 <div class="row gx-1">
                     <div class="form-floating mb-3 col-12 col-lg-6">
-                        <input class="form-control
+                        <input class="form-control cellphone
                             @error('celular') is-invalid @enderror"
                             name="celular" value="{{ old('celular') }}"
                             type="celular" id="celular" placeholder="">
@@ -112,7 +112,7 @@
                     </div>
 
                     <div class="form-floating mb-3 col-12 col-lg-6">
-                        <input class="form-control
+                        <input class="form-control phone
                             @error('telefone') is-invalid @enderror"
                             name="telefone" value="{{ old('telefone') }}"
                             type="telefone" id="telefone" placeholder="">
@@ -125,11 +125,13 @@
                     </div>        
                 </div>
 
-                <legend class="mt-3">Endereço</legend>
+                <legend class="mt-3">
+                    Endereço - Digite seu CEP
+                </legend>
                 
                 <div class="row gx-1">
-                    <div class="form-floating mb-3 col-12 col-lg-6">
-                        <input class="form-control
+                    <div class="form-floating mb-3 col-12 col-lg-4">
+                        <input class="form-control cep
                             @error('cep') is-invalid @enderror"
                             name="cep" value="{{ old('cep') }}"
                             type="text" id="cep" placeholder="">
@@ -141,7 +143,35 @@
                         @enderror
                     </div>
 
-                    <div class="form-floating mb-3 col-12 col-lg-6">
+                    <div class="form-floating mb-3 col-12 col-lg-4">
+                        <input class="form-control uf
+                            @error('uf') is-invalid @enderror"
+                            name="uf" value="{{ old('uf') }}"
+                            type="text" id="uf" placeholder="">
+                        <label for="uf"> UF </label>
+                        @error('uf')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div> 
+
+                    <div class="form-floating mb-3 col-12 col-lg-4">
+                        <input class="form-control
+                            @error('cidade') is-invalid @enderror"
+                            name="cidade" value="{{ old('cidade') }}"
+                            type="text" id="cidade" placeholder="">
+                        <label for="cidade"> Cidade </label>
+                        @error('cidade')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>  
+                </div>                
+
+                <div class="row gx-1">
+                    <div class="form-floating mb-3 col-12 col-lg-4">
                         <input class="form-control
                             @error('rua') is-invalid @enderror"
                             name="rua" value="{{ old('rua') }}"
@@ -153,10 +183,8 @@
                             </span>
                         @enderror
                     </div> 
-                </div>
 
-                <div class="row gx-1">
-                    <div class="form-floating mb-3 col-12 col-lg-6">
+                    <div class="form-floating mb-3 col-12 col-lg-4">
                         <input class="form-control
                             @error('bairro') is-invalid @enderror"
                             name="bairro" value="{{ old('bairro') }}"
@@ -167,9 +195,9 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>
+                    </div>   
 
-                    <div class="form-floating mb-3 col-12 col-lg-6">
+                    <div class="form-floating mb-3 col-12 col-lg-4">
                         <input class="form-control
                             @error('numero') is-invalid @enderror"
                             name="numero" value="{{ old('numero') }}"
@@ -193,9 +221,9 @@
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                    @enderror      
-                </div>
-
+                    @enderror
+                </div>   
+  
                 <legend class="mt-3">Senha de Acesso</legend>
                             
                 <div class="row gx-1">        
@@ -245,6 +273,9 @@
             </div>
         </form>
     </div>
+    
 @endsection
+
+
 
 

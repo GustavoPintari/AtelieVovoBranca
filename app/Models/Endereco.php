@@ -9,14 +9,12 @@ class Endereco extends Model
     protected $table = 'endereco';
 
     protected $fillable = [
-        'cep', 'rua', 'bairro', 'numero',
-        'numero', 'complemento'
+        'cep', 'uf', 'cidade', 'rua', 
+        'bairro', 'numero', 'complemento'
     ];
 
     public function clientes()
     {
         return $this->hasOne(Cliente::class, 'endereco_id', 'id');
     }
-
-
 }

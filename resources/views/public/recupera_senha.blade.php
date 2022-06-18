@@ -3,27 +3,38 @@
 @section('title', 'Ateliê Vovó Branca - Recuperar Senha')
 
 @section('content')
-  <form class="col-sm-10 col-md-8 col-lg-4">
-    <h2>Esqueceu sua Senha ?</h2>
+  <div class="container">
+    <form action="">
+      <div class="d-flex justify-content-center">
+        <div class="col-sm-10 col-md-8 col-lg-6">
+          <h1 class="text-center">
+            Esqueceu sua Senha ?
+          </h1>
+          <hr> 
 
-    <div class="form-floating mb-3">
-      <input type="email" id="txtEmail" 
-        class="form-control" placeholder="" autofocus>
-      <label for="txtEmail">
-        E-mail
-      </label>
-    </div>
+          <div class="form-floating mb-3">
+            <input type="email" id="email" 
+              class="form-control" placeholder="">
+            <label for="email"> E-mail </label>
+          </div>
 
-    <button type="button" 
-      onclick=window.location.href="{{'confirma_senha'}}" 
-      class="btn btn-lg btn-danger"> Recuperar Senha
-    </button>
-    <p class="mt-3">
-      Ainda não é cadastrado ? 
-      <a href="{{ route('cadastro.create') }}">
-        Clique aqui</a> para se cadastrar.
-    </p>
+          <div class="mt-4"> 
+            <div class="d-flex justify-content-end">
+              <button type="button" class="btn btn-lg btn-danger"> 
+                Recuperar Senha
+              </button>
+            </div>
 
-  </form>
-
+            <div class="d-flex justify-content-end">
+              <p class="mt-3">
+                Ainda não é cadastrado ? Clique
+                <a href="{{ route('cadastro.create') }}">
+                  aqui</a> para se cadastrar.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 @endsection

@@ -31,7 +31,7 @@ class DadosRequest extends FormRequest
                 'unique:cliente,email,' . $request->user()->id,
             ], 
 
-            'nascimento' => ['required', 'date'],
+            'nascimento' => ['required', 'string'],
             'celular' => ['required', 'string', 'size:10'],
             'telefone' => ['nullable', 'string', 'size:10'],
         ];

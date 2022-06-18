@@ -26,7 +26,6 @@ trait RegistersUsers
         return $request->wantsJson()
                     ? new JsonResponse([], 201)
                     : redirect()->route('concluido');
-                    //: redirect($this->redirectPath());
     }
 
     public function showRegistrationForm()

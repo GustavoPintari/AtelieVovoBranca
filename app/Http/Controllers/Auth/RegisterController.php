@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 
 use App\Models\Cliente;
 use App\Models\Endereco;
+use App\Http\Requests\EnderecoRequest;
 
 class RegisterController extends Controller
 {
@@ -39,7 +40,15 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
-        $endereco = Endereco::create($data);
+        $endereco = Endereco::create([
+            'cep' => $data['cep'],
+            'uf' => $data['uf'],
+            'cidade' => $data['cidade'],
+            'rua' => $data['rua'],
+            'bairro' => $data['bairro'],
+            'numero' => $data['numero'],
+            'complemento' => $data['complemento'],
+        ]);
 
         return Cliente::create([
             'nome' => $data['nome'], 
