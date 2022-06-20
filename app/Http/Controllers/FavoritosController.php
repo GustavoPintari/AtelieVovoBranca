@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-use App\Models\Produto;
 use App\Models\Cliente;
 use App\Models\Favorito;
+
 
 class FavoritosController extends Controller
 {
@@ -15,24 +15,24 @@ class FavoritosController extends Controller
         $this->middleware('auth');
     }
 
-    public function index(Request $request)
+    public function index()
     {
-        $cliente = Cliente::findOrFail($request->user()->id);
+        $cliente = Cliente::findOrFail(Auth::id());
         $produtos = $cliente->favoritos()->get();
 
         return view('cliente.favoritos', compact('produtos'));
     }
 
-    public function create(Request $request, $id)
+    public function create($id)
     {
-        $cliente = Cliente::findOrFail($request->user()->id);
+        $cliente = Cliente::findOrFail(Auth::id());
         
         $fav = $cliente->favoritos()->get()->where('id', '=', $id)->first();
 
         if(empty($fav))
         {
             Favorito::create([
-                'cliente_id' => $request->user()->id,
+                'cliente_id' => $cliente->id,
                 'produto_id' => $id,
             ]);
         }
@@ -40,11 +40,11 @@ class FavoritosController extends Controller
         return redirect()->route('favoritos.index');
     }
 
-    public function delete(Request $request, $id)
+    public function delete($id)
     {
         $favorito = Favorito::get()->where(
             'produto_id', '=', $id,
-            'cliente_id', '=', $request->user()->id,
+            'cliente_id', '=', Auth::id(),
         )->first();
 
         $favorito->delete();

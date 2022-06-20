@@ -1,3 +1,5 @@
+@inject('pedidos', 'App\Services\CarrinhoService')
+
 <nav class="navbar navbar-expand-lg navbar-dark
   bg-danger border-bottom shadow-sm mb-3">
     <div class="container">
@@ -35,11 +37,11 @@
                 <span
                   class="badge rounded-pill bg-light text-danger 
                     position-absolute ms-4 mt-0"
-                  title="2 produto(s) no carrinho">
-                  <small>2</small>
+                    title="2 produto(s) no carrinho">
+                  <small>{{ $pedidos->contagem() }}</small>
                 </span>
                 <a class="nav-link text-white" 
-                  href="{{ route('carrinho') }}">
+                  href="{{ route('carrinho.index') }}">
                     <i class="bi-cart" 
                       style="font-size:24px;line-height:24px;">
                     </i>
@@ -55,33 +57,32 @@
 
         @guest
           <div class="align-self-end">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link text-white" 
-                          href="{{ route('cadastro.create') }}">Cadastrar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" 
-                          href="{{ route('login') }}">Entrar</a>
-                    </li>
-                    <li class="nav-item">
-                        <span
-                            class="badge rounded-pill bg-light text-danger 
-                              position-absolute ms-4 mt-0"
-                            title="2 produto(s) no carrinho">
-                            <small>2</small>
-                        </span>
-                        <a class="nav-link text-white" 
-                          href="{{ route('carrinho') }}">
-                            <i class="bi-cart" 
-                              style="font-size:24px;line-height:24px;">
-                            </i>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        @endguest
-        
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a class="nav-link text-white" 
+                        href="{{ route('cadastro.create') }}">Cadastrar</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link text-white" 
+                        href="{{ route('login') }}">Entrar</a>
+                  </li>
+                  <li class="nav-item">
+                      <span
+                          class="badge rounded-pill bg-light text-danger 
+                            position-absolute ms-4 mt-0"
+                            title="0 produto(s) no carrinho">
+                          <small>0</small>
+                      </span>
+                      <a class="nav-link text-white" 
+                        href="{{ route('carrinho.index') }}">
+                          <i class="bi-cart" 
+                            style="font-size:24px;line-height:24px;">
+                          </i>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+        @endguest     
       </div>
     </div>
 </nav>

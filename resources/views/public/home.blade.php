@@ -84,7 +84,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('carrinho' )}}" 
+                            <a href="{{ route('carrinho.create', $p->id )}}" 
                                 class="btn btn-danger mt-2 d-block">
                                 Adicionar ao Carrinho
                             </a>

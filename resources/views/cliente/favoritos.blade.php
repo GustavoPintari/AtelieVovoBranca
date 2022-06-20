@@ -27,7 +27,7 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ route('carrinho' )}}"
+                    <a href="{{ route('carrinho.index' )}}"
                         class="btn btn-danger mt-2 d-block">
                         Adicionar ao Carrinho
                     </a>

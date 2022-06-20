@@ -11,9 +11,7 @@ Route::get('/confirma_contato', function () {
     return view('public/confirma_contato');
 })->name('confirma_contato');
 
-Route::get('/carrinho', function () {
-    return view('cliente/carrinho');
-})->name('carrinho');
+
 
 
 
@@ -91,6 +89,15 @@ Route::prefix('favoritos')->name('favoritos.')->group(function(){
     Route::get('/{id}', 'FavoritosController@create')->name('create');
 
     Route::get('/{id}/remover', 'FavoritosController@delete')->name('delete');
+});
+
+Route::prefix('carrinho')->name('carrinho.')->group(function() {
+
+    Route::get('/', 'CarrinhoController@index')->name('index');
+
+    Route::get('/{id}', 'CarrinhoController@create')->name('create');
+
+    Route::get('/{id}/remover', 'CarrinhoController@delete')->name('delete');
 });
 
 Route::prefix('categorias')->name('categoria.')->group(function() {

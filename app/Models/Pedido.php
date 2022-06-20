@@ -17,7 +17,7 @@ class Pedido extends Model
         return $this->belongsTo(Cliente::class, 'cliente_id', 'id');
     }
 
-    public function pedido()
+    public function status()
     {
         return $this->belongsTo(Status::class, 'status_id', 'id');
     }

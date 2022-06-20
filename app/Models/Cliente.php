@@ -32,7 +32,7 @@ class Cliente extends Authenticatable
 
     public function pedidos()
     {
-        return $this->hasMany(Pedido::class, 'pedido_id', 'id');
+        return $this->hasMany(Pedido::class, 'cliente_id', 'id');
     }
 
     public function favoritos()

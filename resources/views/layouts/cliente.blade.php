@@ -7,12 +7,10 @@
         <link rel="stylesheet" href="{{ asset('site/estilos.css') }}">
         <link rel="stylesheet" href="{{ asset('site/bootstrap.css') }}">
         <link rel="stylesheet" href="{{ asset('site/bootstrap-icons.css') }}"> 
-
         <title>@yield('title')</title>
     </head>
     <body>
         <div class="d-flex flex-column wrapper">
-
             @include('layouts.partials.navbar')
 
             <main class="flex-fill">
@@ -64,13 +62,11 @@
                     </div>
                 </div>
             </main>
-
             @include('layouts.partials.footer')
         </div>
 
         <script src="{{ asset('site/jquery.js') }}"></script>
         <script src="{{ asset('site/bootstrap.js') }}"></script>
-
         @include('layouts.partials.mask')
         
     </body>
