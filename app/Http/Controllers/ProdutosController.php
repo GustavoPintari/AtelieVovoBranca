@@ -78,6 +78,7 @@ class ProdutosController extends Controller
     {
         $produto = Produto::findOrFail($id);
         $this->imagemService->deletaImagem($produto);
+        
         $produto->delete($request->all());
         
         return redirect()->route('produto.list');

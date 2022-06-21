@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
-
 use App\Models\Pedido;
 use App\Services\CarrinhoService;
 

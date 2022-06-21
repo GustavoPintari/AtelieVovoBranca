@@ -125,6 +125,10 @@ Route::prefix('categorias')->name('categoria.')->group(function() {
     });
 });
 
+Route::prefix('relatorios')->name('relatorio.')->group(function() {
+    Route::get('/pc', 'RelatoriosController@pc')->name('pc');
+});
+
 Route::prefix('produtos')->name('produto.')->group(function() {
 
     Route::get('/', 'ProdutosController@index')->name('list');

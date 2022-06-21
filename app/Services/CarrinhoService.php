@@ -16,15 +16,15 @@ class CarrinhoService
     {
         $cliente = Cliente::findOrFail(Auth::id());
 
-        $pedido = $cliente->pedidos()->get()->where(
-            'status_id', '=', '1',
-        )->first();
+        $pedido = $cliente->pedidos()->get()
+            ->where('status_id', '=', '1')
+            ->first();
 
         if(empty($pedido))
         {
-            $this->setPedido($pedido);
+            $pedido = $this->setPedido($pedido);
         }
-        
+
         return $pedido->id;
     }
 
@@ -41,15 +41,16 @@ class CarrinhoService
 
     public function getDetalhe($id)
     {
-        $detalhe = DetalhePedido::get()->where(
-            'produto_id', '=', $id,
-            'pedido_id', '=', $this->getPedido(),
-            'cliente_id', '=', Auth::id()
-        )->first();
+        $pedido = $this->getPedido();
+
+        $detalhe = DetalhePedido::get()
+            ->where('produto_id', '=', $id)
+            ->where('pedido_id', '=', $pedido)    
+            ->first();
 
         if(empty($detalhe))
         {
-            $this->setDetalhe($id);
+            $detalhe = $this->setDetalhe($id);
         }
 
         return $detalhe;
@@ -59,13 +60,14 @@ class CarrinhoService
     {
         $produto = Produto::findOrFail($id);
         
-        DetalhePedido::create([
+        $detalhe = DetalhePedido::create([
             'pedido_id' => $this->getPedido(),
             'produto_id' => $produto->id, 
             'quantidade' => 1,
             'subtotal' => $produto->valor,
         ]);
 
+        return $detalhe;
     }
 
     public function contagem()
@@ -142,7 +144,6 @@ class CarrinhoService
         
         if($pedido->total != 0){
             $pedido->update(array('status_id' => 2));
-
             return true;
         } 
 

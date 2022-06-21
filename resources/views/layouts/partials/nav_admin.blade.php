@@ -19,15 +19,11 @@
           <ul class="navbar-nav">
             <li class="nav-item">
                 <a class="nav-link text-white" 
-                  href="{{ route('produto.list') }}">Produtos</a>
+                  href="{{ route('produto.list') }}"> Cadastros </a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" 
-                href="{{ route('admin_relatorios') }}">Relatórios</a>
-            </li>  
-            <li class="nav-item">
-              <a class="nav-link text-white" 
-                href="#">Caixa</a>
+                href="{{ route('relatorio.pc') }}"> Relatórios </a>
             </li>                         
             <li class="nav-item ms-5">
               <a class="nav-link text-white" 

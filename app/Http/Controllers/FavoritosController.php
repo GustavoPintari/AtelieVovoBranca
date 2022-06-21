@@ -42,10 +42,10 @@ class FavoritosController extends Controller
 
     public function delete($id)
     {
-        $favorito = Favorito::get()->where(
-            'produto_id', '=', $id,
-            'cliente_id', '=', Auth::id(),
-        )->first();
+        $favorito = Favorito::get()
+            ->where('produto_id', '=', $id)
+            ->where('cliente_id', '=', Auth::id())
+            ->first();
 
         $favorito->delete();
 

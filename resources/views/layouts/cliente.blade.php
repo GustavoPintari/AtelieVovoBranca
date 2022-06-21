@@ -47,13 +47,13 @@
                                     <i class="bi-heart fs-6"></i> 
                                     Favoritos
                                 </a>
-                                <a href="/cliente_senha.html" 
+                                {{-- <a href="/cliente_senha.html" 
                                     class="list-group-item list-group-item-action
                                     @if(Request::is('senha*')) 
                                         bg-danger text-light @endif">
                                     <i class="bi-lock fs-6"></i> 
                                     Alterar Senha
-                                </a>      
+                                </a>    --}}   
                             </div>
                         </div>
                         <div class="col-8">
