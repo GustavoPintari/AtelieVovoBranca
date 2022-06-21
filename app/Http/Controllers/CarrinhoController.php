@@ -27,14 +27,14 @@ class CarrinhoController extends Controller
 
     public function create($id)
     {
-        $this->carrinhoService->getProduto($id);
+        $this->carrinhoService->getDetalhe($id);
     
         return redirect()->route('carrinho.index');
     }
 
     public function delete($id)
     {
-        $produto = $this->carrinhoService->getProduto($id);
+        $produto = $this->carrinhoService->getDetalhe($id);
         $produto->delete();
 
         return redirect()->route('home');
@@ -42,24 +42,26 @@ class CarrinhoController extends Controller
 
     public function inc($id)
     {
-        $this->carrinhoService->getProduto($id)->increment('quantidade');
-
-        $quantidade = $this->carrinhoService->getProduto($id)->quantidade;
-        $subtotal = $this->carrinhoService->getProduto($id)->subtotal;
-        
-        $this->carrinhoService->getProduto($id)->
-            update((array('subtotal' => $quantidade * $subtotal )));
+        $this->carrinhoService->incremento($id);
 
         return redirect()->route('carrinho.index');
     }
 
     public function dec($id)
     {
-        //if($this->carrinhoService->quantidade($id) > 1){
-            $this->carrinhoService->getProduto($id)->decrement('quantidade');
-       // }
-       
+        $this->carrinhoService->decremento($id);
+      
         return redirect()->route('carrinho.index');
+    }
+
+    public function concluir()
+    {
+        if($this->carrinhoService->concluirCompra())
+        {
+            return view('cliente.concluir');
+        }
+
+        return redirect()->route('carrinho.index');   
     }
 
 }

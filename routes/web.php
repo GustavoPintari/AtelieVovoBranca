@@ -95,6 +95,8 @@ Route::prefix('carrinho')->name('carrinho.')->group(function() {
 
     Route::get('/', 'CarrinhoController@index')->name('index');
 
+    Route::get('/concluir', 'CarrinhoController@concluir')->name('concluir');
+
     Route::get('/{id}', 'CarrinhoController@create')->name('create');
 
     Route::get('/{id}/inc', 'CarrinhoController@inc')->name('inc');

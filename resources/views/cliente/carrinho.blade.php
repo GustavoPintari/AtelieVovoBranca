@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Ateliê Vovó Branca - Carrinho')
 @section('content')
-    @inject('pr', 'App\Services\CarrinhoService')
+    @inject('d', 'App\Services\CarrinhoService')
 
     <div class="container">
         <h1>Carrinho de Compras</h1>
@@ -40,7 +40,7 @@
                                 
                             <input disabled type="text" class="form-control  
                                 text-center border-dark" value=
-                                "{{ $pr->getProduto($p->id)->quantidade }}">
+                                "{{ $d->getDetalhe($p->id)->quantidade }}">
 
                             <button class="btn btn-outline-dark btn-sm"
                                 type="button" onclick="window.location.href=
@@ -63,25 +63,28 @@
                         <div class="text-end mt-2">
                             <span class="text-dark" id="valor">
                                 Valor Item: R$ 
-                                {{ $pr->getProduto($p->id)->subtotal }}
+                                {{ $d->getDetalhe($p->id)->subtotal }}
                             </span>
                         </div>
                     </div>
                 </div>
             </li>
         @empty
-        <h1> Carrinho Vazio </h1>
+        <div class="card card-body text-center">
+            <h5> Carrinho Vazio </h5>
+        </div>
         @endforelse
             <li class="list-group-item py-3">
                 <div class="text-end">
                     <h4 class="text-dark mb-3">
-                        Valor Total: R$ 219.80
+                        Valor Total: R$
+                            {{ $d->getTotal() }}
                     </h4>
                     <a href="{{ route('home') }}" 
                         class="btn btn-outline-success btn-lg">
                         Continuar Comprando                            
                     </a>
-                    <a href="/fechamento_itens.html" 
+                    <a href="{{ route('carrinho.concluir')}}" 
                         class="btn btn-danger btn-lg ms-2 mt-xs-3">
                         Fechar Compra
                     </a>
