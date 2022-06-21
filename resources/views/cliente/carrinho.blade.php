@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Ateliê Vovó Branca - Carrinho')
 @section('content')
+    @inject('pr', 'App\Services\CarrinhoService')
+
     <div class="container">
         <h1>Carrinho de Compras</h1>
         <ul class="list-group mb-3">
@@ -28,16 +30,21 @@
                         col-md-4 offset-md-8 col-lg-3 offset-lg-0 
                         col-xl-2 align-self-center mt-3">
                         <div class="input-group">
-                            <button class="btn btn-outline-dark btn-sm" type="button">
+                            <button class="btn btn-outline-dark btn-sm"  
+                                type="button" onclick="window.location.href=
+                                '{{ route('carrinho.dec', $p->id) }}'">
                                 <i class="bi-caret-down" 
-                                    style="font-size: 16px; line-height: 16px;"></i>
+                                    style="font-size: 16px; line-height: 16px">
+                                </i>
                             </button>
                                 
-                            <input type="text" class="form-control 
-                                text-center border-dark" value="1">
+                            <input disabled type="text" class="form-control  
+                                text-center border-dark" value=
+                                "{{ $pr->getProduto($p->id)->quantidade }}">
 
                             <button class="btn btn-outline-dark btn-sm"
-                                type="button">
+                                type="button" onclick="window.location.href=
+                                '{{ route('carrinho.inc', $p->id) }}'">
                                 <i class="bi-caret-up"
                                     style= "font-size: 16px; 
                                     line-height: 16px;">
@@ -54,8 +61,9 @@
                             </button>
                         </div>
                         <div class="text-end mt-2">
-                            <span class="text-dark">
-                                Valor Item: R$ {{ $p->valor }}
+                            <span class="text-dark" id="valor">
+                                Valor Item: R$ 
+                                {{ $pr->getProduto($p->id)->subtotal }}
                             </span>
                         </div>
                     </div>

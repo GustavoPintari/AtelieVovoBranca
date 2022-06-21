@@ -28,9 +28,3 @@
     });
 </script>
 
-
-<script>
-    $("#teste").click(function() {
-    $('#inp').html(function(i, val) { return +val+1 });
-}
-</script>

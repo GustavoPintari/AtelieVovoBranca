@@ -62,7 +62,7 @@ class CarrinhoService
         DetalhePedido::create([
             'pedido_id' => $this->getPedido(),
             'produto_id' => $produto->id, 
-            'quantidade' => 0,
+            'quantidade' => 1,
             'subtotal' => $produto->valor,
         ]);
     }
@@ -73,4 +73,5 @@ class CarrinhoService
 
         return $contagem->produtos()->get()->count();
     }
+
 }
