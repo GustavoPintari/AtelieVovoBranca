@@ -1,6 +1,6 @@
 # Ateliê Vovó Branca
 
-Trabalho acadêmico desenvolvido em 2022 para a disciplina de **Engenharia de Software**, como trabalho de conclusão do primeiro semestre do curso de **Ciência da Computação**.
+Trabalho acadêmico desenvolvido em 2022 no curso de **Ciência da Computação**, como trabalho de conclusão do primeiro semestre da disciplina de **Engenharia de Software**.
 
 O sistema é uma **loja online com gestão de pedidos e de inventário**. O projeto foi inspirado no trabalho de uma tia que faz bonecas de pano artesanalmente e as vende sob o nome **Ateliê Vovó Branca**.
 
