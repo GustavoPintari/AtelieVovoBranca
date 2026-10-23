@@ -1,63 +1,97 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Ateliê Vovó Branca
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+Trabalho acadêmico desenvolvido em 2022 para a disciplina de **Engenharia de Software**, como trabalho de conclusão do primeiro semestre do curso de **Ciência da Computação**.
 
-## About Laravel
+O sistema é uma **loja online com gestão de pedidos e de inventário**. O projeto foi inspirado no trabalho de uma tia que faz bonecas de pano artesanalmente e as vende sob o nome **Ateliê Vovó Branca**.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Loja (cliente)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Vitrine com os produtos cadastrados.
+- Cadastro de cliente com validação de CPF, login e logout.
+- Consulta e edição dos dados pessoais e do endereço.
+- Lista de favoritos.
+- Carrinho de compras: adicionar, remover e alterar a quantidade de itens, limitada ao estoque disponível, com cálculo de subtotal e total.
+- Conclusão do pedido.
+- Páginas institucionais: sobre, contato, termos de uso e política de privacidade.
 
-## Learning Laravel
+### Administração
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- CRUD de **categorias**.
+- CRUD de **produtos**, com upload de imagem, preço, quantidade em estoque e visibilidade na loja.
+- Relatório de produtos por categoria.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tecnologias
 
-## Laravel Sponsors
+- **PHP** com **Laravel 7** (Eloquent, Blade, Form Requests e regras de validação customizadas).
+- **MySQL** como banco de dados.
+- **Bootstrap**, **Bootstrap Icons**, **jQuery** e **jQuery Mask** no front-end.
+- `default.nix` com um ambiente de desenvolvimento via Nix (PHP, Composer e Node.js).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Estrutura
 
-### Premium Partners
+```
+app/
+├── Http/Controllers/    # Carrinho, Categorias, Cliente, Favoritos, Produtos, Relatórios...
+├── Http/Requests/       # Validação dos formulários (cadastro, dados, endereço, login)
+├── Models/              # Categoria, Cliente, Endereco, Favorito, Pedido, DetalhePedido, Produto, Status
+├── Rules/Cpf.php        # Validação de CPF
+└── Services/            # CarrinhoService (regras do carrinho) e ImagemService (upload de imagens)
+database/migrations/     # Estrutura do banco de dados
+resources/views/         # Telas Blade: public/, cliente/, administrador/, auth/
+routes/web.php           # Rotas da aplicação
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## Como executar
 
-## Contributing
+Requisitos: **PHP 7.2.5+** (ou 8.0), **Composer** e **MySQL**.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Instale as dependências:
 
-## Code of Conduct
+   ```bash
+   composer install
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+2. Crie o arquivo de ambiente e gere a chave da aplicação:
 
-## Security Vulnerabilities
+   ```bash
+   cp .env.example .env
+   ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   php artisan key:generate
+   ```
 
-## License
+3. Configure o acesso ao MySQL no `.env` (`DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) e crie as tabelas:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   ```bash
+   php artisan migrate
+   ```
 
-# Atelie
+4. Cadastre os status de pedido na tabela `status`. O carrinho usa o status de id `1` para o pedido em aberto e o de id `2` para o pedido concluído:
+
+   ```sql
+   INSERT INTO status (id, descricao) VALUES (1, 'Em aberto'), (2, 'Concluído');
+   ```
+
+5. Inicie o servidor:
+
+   ```bash
+   php artisan serve
+   ```
+
+A loja fica disponível em `http://localhost:8000`. As telas de administração ficam em `/produtos`, `/categorias` e `/relatorios/pc`.
+
+## Uso de inteligência artificial
+
+Todo o código-fonte deste projeto foi escrito por mim, em 2022, sem o uso de inteligência artificial.
+
+Em 2026, a IA **Claude** (Anthropic) foi utilizada apenas para:
+
+- escrever este `README.md`;
+- remover do repositório arquivos desnecessários à arquitetura do projeto (as dependências do Composer em `vendor/` e as configurações de IDE em `.vscode/`) e atualizar o `.gitignore` correspondente.
+
+## Licença
+
+Distribuído sob a licença MIT. Veja [LICENSE](LICENSE).
