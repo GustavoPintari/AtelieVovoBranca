@@ -83,6 +83,15 @@ Requisitos: **PHP 7.2.5+** (ou 8.0), **Composer** e **MySQL**.
 
 A loja fica disponível em `http://localhost:8000`. As telas de administração ficam em `/produtos`, `/categorias` e `/relatorios/pc`.
 
+## Limitações
+
+Por ser um trabalho acadêmico, o sistema tem limitações conhecidas:
+
+- As telas de administração (`/produtos`, `/categorias` e `/relatorios/pc`) não exigem login nem perfil de administrador, então qualquer visitante pode acessá-las.
+- A vitrine exibe todos os produtos cadastrados, inclusive os marcados como não visíveis.
+- Não há seeders: os status de pedido precisam ser cadastrados manualmente (veja [Como executar](#como-executar)).
+- Não há testes automatizados além dos exemplos padrão do Laravel.
+
 ## Uso de inteligência artificial
 
 Todo o código-fonte deste projeto foi escrito por mim, em 2022, sem o uso de inteligência artificial.
